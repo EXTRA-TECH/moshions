@@ -9,7 +9,7 @@ builder.init(BUILDER_API_KEY)
 
 export async function getStaticProps({
   params,
-}: GetStaticPropsContext<{ path: any[] }>) {
+}: GetStaticPropsContext<{ page: string[] }>) {
   const page = await builder.get('page', {
     userAttributes: {
       urlPath: '/' + (params?.page?.join('/') || ''),
