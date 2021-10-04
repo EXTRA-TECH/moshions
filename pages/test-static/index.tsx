@@ -1,5 +1,6 @@
 import {useQuery} from '@apollo/react-hooks'
 import {MEMBERS} from '../../gql/example'
+import Navbar from '../../components/Navbar'
 
 const TestStatic = () => {
   const {data} = useQuery(MEMBERS)
@@ -7,8 +8,11 @@ const TestStatic = () => {
   if (data) {
     console.log(data)
   }
+
   return (
-    <div>Test Static</div>
+    <>
+      <Navbar />
+    </>
   )
 }
 
