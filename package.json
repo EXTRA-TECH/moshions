@@ -9,7 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@apollo/client": "^3.4.15",
+    "@apollo/react-hooks": "^4.0.0",
     "@builder.io/react": "^1.1.46",
+    "@types/nprogress": "^0.2.0",
+    "graphql": "^15.6.0",
+    "graphql-tag": "^2.12.5",
     "next": "11.1.2",
     "react": "17.0.2",
     "react-dom": "17.0.2"
