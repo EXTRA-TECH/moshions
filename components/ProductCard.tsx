@@ -4,7 +4,7 @@ const ProductCard = () => {
       <div className="col-md-4 py-4">
         <div className="shadow">
           <div style={{backgroundColor: "black"}}>
-            <a href="#" className="text-decoration-none p-0">
+            <a href="#" className="text-decoration-none">
               <img src="/product1.svg" alt="product"  style={{ width: "100%"}} className="w-100 product-img" />
             </a>
           </div>

@@ -8,7 +8,7 @@ const Footer = () => {
             <ul className='nav navbar-nav'>
               <li><a href="#" className="text-light text-decoration-none">BOOK AN APPOINTMENT |</a></li>
               <li><a href="#" className="text-light text-decoration-none">FAQS |</a></li>
-              <li><a href="#" className="text-light text-decoration-none">{`SHIPPING & RETURN POLICY |`}</a></li>
+              <li><a href="#" className="text-light text-decoration-none">{`SHIPPING & RETURN POLICY`}</a></li>
             </ul>
           </div>
         </div>
@@ -18,7 +18,7 @@ const Footer = () => {
             <ul className='nav navbar-nav'>
               <li><a href="#" className="text-light text-decoration-none">BOOK AN APPOINTMENT |</a></li>
               <li><a href="#" className="text-light text-decoration-none">FAQS |</a></li>
-              <li><a href="#" className="text-light text-decoration-none">{`SHIPPING & RETURN POLICY |`}</a></li>
+              <li><a href="#" className="text-light text-decoration-none">{`SHIPPING & RETURN POLICY`}</a></li>
             </ul>
           </div>
         </div>
@@ -28,7 +28,7 @@ const Footer = () => {
             <ul className='nav navbar-nav'>
               <li><a href="#" className="text-light text-decoration-none">BOOK AN APPOINTMENT |</a></li>
               <li><a href="#" className="text-light text-decoration-none">FAQS |</a></li>
-              <li><a href="#" className="text-light text-decoration-none">{`SHIPPING & RETURN POLICY |`}</a></li>
+              <li><a href="#" className="text-light text-decoration-none">{`SHIPPING & RETURN POLICY`}</a></li>
             </ul>
           </div>
         </div>
