@@ -3,6 +3,7 @@ import {MEMBERS} from '../../gql/example'
 import Navbar from '../../components/Navbar'
 import CollectionFilter from '../../components/CollectionFilter'
 import CollectionProduct from '../../components/CollectionProduct'
+import Footer from '../../components/Footer'
 
 const TestStatic = () => {
   // Include Navbar, Filter
@@ -18,7 +19,8 @@ const TestStatic = () => {
         `}
        />
        <CollectionProduct />
-       <div style={{paddingTop: "200px"}}></div>
+       <div style={{paddingTop: "40px"}}></div>
+       <Footer />
     </>
   )
 }

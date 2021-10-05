@@ -12,7 +12,6 @@ const CollectionProduct = () => {
           <ProductCard />
           <ProductCard />
           <ProductCard />
-          <ProductCard />
         </div>
       </div>
     </>
