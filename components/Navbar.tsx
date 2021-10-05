@@ -32,6 +32,13 @@ const Navbar = () => {
                     </a>
                   </Link>
                 </li>
+                <li>
+                  <Link href="/#">
+                    <a href="#" className="text-light text-decoration-none font-weight-bold">
+                      THE BRAND
+                    </a>
+                  </Link>
+                </li>
               </ul>
             </div>
             <div className="column navbar-icons-container">
