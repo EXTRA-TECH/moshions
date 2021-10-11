@@ -1,13 +1,14 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import { Builder } from "@builder.io/react";
 
-const Navbar = () => {
+const Navbar = ({showNav}: any) => {
   return (
     <>
-       <Head>
+        <Head>
             <title>MOSHIONS</title>
         </Head>
-        <nav id="nav" className="navbar-nav ">
+        <nav id={`nav`} className="navbar-nav sticky-top">
           <div className="row">
             <div className="column">
               <div className="container navbar-brand-container">
@@ -52,5 +53,21 @@ const Navbar = () => {
     </>
   )
 }
+
+Builder.registerComponent(Navbar, {
+  name: "Navbar",
+  inputs: [
+    {
+      name: "title",
+      type: "text",
+      defaultValue: 'I am a heading!'
+    },
+    {
+      name: "color",
+      type: "color",
+      defaultValue: 'black'
+    },
+  ],
+});
 
 export default Navbar

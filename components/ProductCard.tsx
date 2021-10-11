@@ -1,11 +1,11 @@
 const ProductCard = () => {
   return (
     <>
-      <div className="col-md-4 py-4">
-        <div className="shadow">
-          <div style={{backgroundColor: "black"}}>
+      <div className="col-xs-6 col-sm-6 col-md-3 py-3">
+        <div className="shadow product-hover">
+          <div>
             <a href="#" className="text-decoration-none">
-              <img src="/product1.svg" alt="product"  style={{ width: "100%"}} className="w-100 product-img" />
+              <img src="/product1.svg" alt="product"  style={{ width: "100%",}} className="w-100 product-img" />
             </a>
           </div>
           <div className="product-details px-2 py-2">

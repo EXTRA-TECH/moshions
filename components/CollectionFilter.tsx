@@ -11,7 +11,7 @@ const CollectionFilter = ({title, description}: any) => {
           {description || 'Description'}
         </div>
       </div>
-      <div className="container filter-input">
+      {/* <div className="container filter-input">
         <div className="row">
           <div className="column">
             <div className="">
@@ -33,7 +33,7 @@ const CollectionFilter = ({title, description}: any) => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   )
 }

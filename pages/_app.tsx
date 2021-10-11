@@ -1,4 +1,5 @@
 import '../styles/globals.css'
+
 import React, {useReducer, useEffect, useMemo, useContext} from 'react';
 import Head from 'next/head'
 import Script from 'next/script'
@@ -14,6 +15,9 @@ import {reducer} from '../lib/reducer';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+
+// configure saleor platform
+import { useAuth } from "@saleor/sdk";
 
 
 library.add(fab, faCoffee)
@@ -55,7 +59,7 @@ const MoshionsApp = ({ Component, pageProps }: AppProps) => {
           <meta name="theme-color" content="#fff" />
           <title>MOSHIONS |</title>
         </Head>
-        <Component {...pageProps} />
+          <Component {...pageProps} />
           <Script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossOrigin="anonymous"></Script>
           <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js" integrity="sha384-lpyLfhYuitXl2zRZ5Bn2fqnhNAKOAaM/0Kr9laMspuaMiZfGmfwRNFh8HlMy49eQ" crossOrigin="anonymous"></Script>
       </AuthContext.Provider>

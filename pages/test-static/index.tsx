@@ -4,12 +4,12 @@ import Navbar from '../../components/Navbar'
 import CollectionFilter from '../../components/CollectionFilter'
 import CollectionProduct from '../../components/CollectionProduct'
 import Footer from '../../components/Footer'
+import Page from '../../components/Page'
 
 const TestStatic = () => {
   // Include Navbar, Filter
   return (
-    <>
-      <Navbar />
+    <Page>
       <CollectionFilter
         title={`WOMEN'S WEAR`}
         description={`
@@ -20,8 +20,7 @@ const TestStatic = () => {
        />
        <CollectionProduct />
        <div style={{paddingTop: "40px"}}></div>
-       <Footer />
-    </>
+    </Page>
   )
 }
 
