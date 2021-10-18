@@ -181,6 +181,13 @@ const Products = () => {
                     className="w-100p"
                     srcSet=""
                   />
+                  <div className="item-details">
+                    <div className="item-label">
+                      <h4>Josi Dress</h4>
+                      <span>RWF 310,000</span>
+                    </div>
+                    <span className="bg-black item-color"></span>
+                  </div>
                 </div>
               </div>
 
@@ -192,9 +199,15 @@ const Products = () => {
                     className="w-100p"
                     srcSet=""
                   />
+                  <div className="item-details">
+                    <div className="item-label">
+                      <h4>Mwimba Dress</h4>
+                      <span>RWF 310,000</span>
+                    </div>
+                    <span className="yellow item-color"></span>
+                  </div>
                 </div>
               </div>
-
               <div className="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <div className="w-100p item">
                   <img
@@ -203,6 +216,13 @@ const Products = () => {
                     className="w-100p"
                     srcSet=""
                   />
+                  <div className="item-details">
+                    <div className="item-label">
+                      <h4>Bucura Wrap Dress</h4>
+                      <span>RWF 310,000</span>
+                    </div>
+                    <span className="bg-black item-color"></span>
+                  </div>
                 </div>
               </div>
             </div>
