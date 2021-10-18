@@ -1,8 +1,8 @@
 import {useQuery} from '@apollo/react-hooks'
 import {MEMBERS} from '../../gql/example'
 import Navbar from '../../components/Navbar'
-import CollectionFilter from '../../components/CollectionFilter'
-import CollectionProduct from '../../components/CollectionProduct'
+import CollectionFilter from '../../components/Products/components/CollectionFilter'
+import CollectionProduct from '../../components/Products/components/CollectionProduct'
 import Footer from '../../components/Footer'
 import Page from '../../components/Page'
 

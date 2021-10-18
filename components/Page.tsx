@@ -3,9 +3,11 @@ import Navbar from "./Navbar"
 
 const Page = ({children}: any) => {
   return (<>
+  <div className="wrapper">
     <Navbar />
       {children}
     <Footer />
+  </div>
   </>)
 }
 
