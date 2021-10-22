@@ -26,8 +26,8 @@ import { useAuth } from "@saleor/sdk";
 import {
   apiUrl,
   sentryDsn,
-  sentrySampleRate,
-  serviceWorkerTimeout,
+  // sentrySampleRate,
+  // serviceWorkerTimeout,
 } from "../constants";
 
 

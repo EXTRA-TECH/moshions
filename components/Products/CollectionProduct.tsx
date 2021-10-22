@@ -1,4 +1,4 @@
-import ProductCard from "../../ProductCard"
+import ProductCard from "../ProductCard"
 import Link from 'next/router'
 import SingleProductWithBox from "./SingleProduct"
 

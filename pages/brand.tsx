@@ -1,3 +1,4 @@
+import Footer from '../components/Footer'
 import Head from 'next/head'
 import Navbar from '../components/Navbar'
 
@@ -11,7 +12,7 @@ const Brand = () => {
         <Navbar />
 
         <div className="main-pic-holder">
-          <img src="assets/pic-about.jpg" className="w-100p" alt="" srcSet="" />
+          <img src="/assets/pic-about.jpg" className="w-100p" alt="" srcSet="" />
         </div>
 
         <div className="about">
@@ -39,13 +40,14 @@ const Brand = () => {
           </div>
           <div>
             <img
-              src="assets/Moses-Turahirwa.svg"
+              src="/assets/Moses-Turahirwa.svg"
               className="w-100p"
               alt=""
               srcSet=""
             />
           </div>
         </div>
+        <Footer />
       </div>
     </>
   )
