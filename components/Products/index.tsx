@@ -12,51 +12,7 @@ const Products = () => {
   // Include Navbar, Filter
   return (
     <div className="wrapper">
-      <header className="header bg-black">
-        <div className="container">
-          <div className="header-top">
-            <div className="header-logo-container">
-              <Link href="/">
-                <img
-                  src="/assets/MoShiOns_LoGo_White.svg"
-                  alt="Motions"
-                  className="logo"
-                  srcSet=""
-                />
-              </Link>
-            </div>
-            <a href="#menu" className="show-mobile mobile-left showmenu">
-              <img src="/assets/menu.svg" className="header-icon" alt="" srcSet="" />
-            </a>
-            <div id="menu" className="header-menu menu-global">
-              <ul className="header-menu-list">
-                <li><a href="#">MEN</a></li>
-                <li><a href="#">WOMEN</a></li>
-                <li><a href="#">ACCESSORIES</a></li>
-                <li><a href="#">THE BRAND</a></li>
-              </ul>
-              <a href="#" className="close-menu show-mobile">x</a>
-            </div>
-            <div className="header-shop-actions">
-              <img
-                src="/assets/Icon feather-heart.svg"
-                className="header-icon"
-                alt=""
-                srcSet=""
-              />
-              <span className="header-cart-items">
-                <img
-                  src="/assets/Icon awesome-shopping-bag.svg"
-                  className="header-icon"
-                  alt=""
-                  srcSet=""
-                />
-                <span>0</span>
-              </span>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Navbar />
 
       <div className="page-title">
         <h1>WOMENSWEAR</h1>

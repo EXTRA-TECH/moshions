@@ -13,12 +13,22 @@ import Router from "next/router";
 import {useApollo} from '../lib/apolloClient';
 import {reducer} from '../lib/reducer';
 
+import { SaleorProvider } from "@saleor/sdk";
+import { ConfigInput } from "@saleor/sdk/lib/types";
+
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 
 // configure saleor platform
 import { useAuth } from "@saleor/sdk";
+
+import {
+  apiUrl,
+  sentryDsn,
+  sentrySampleRate,
+  serviceWorkerTimeout,
+} from "../constants";
 
 
 library.add(fab, faCoffee)
@@ -43,7 +53,13 @@ const MoshionsApp = ({ Component, pageProps }: AppProps) => {
     state
   }), [state])
 
+
+  const SALEOR_CONFIG: ConfigInput = {
+    apiUrl, 
+  };
+
   return (
+    <>
     <ApolloProvider client={apolloClient}>
       <AuthContext.Provider value={authContext}>
         <Head>
@@ -60,10 +76,14 @@ const MoshionsApp = ({ Component, pageProps }: AppProps) => {
           <meta name="theme-color" content="#fff" />
           <title>MOSHIONS |</title>
         </Head>
-          <Component {...pageProps} />
+          <SaleorProvider config={SALEOR_CONFIG}>
+            <Component {...pageProps} />
+          </SaleorProvider>
           <Script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossOrigin="anonymous"></Script>
           <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js" integrity="sha384-lpyLfhYuitXl2zRZ5Bn2fqnhNAKOAaM/0Kr9laMspuaMiZfGmfwRNFh8HlMy49eQ" crossOrigin="anonymous"></Script>
       </AuthContext.Provider>
-    </ApolloProvider>)
+    </ApolloProvider>
+    </>
+    )
 }
 export default MoshionsApp
