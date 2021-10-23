@@ -53,7 +53,7 @@ const Products = () => {
       <Navbar />
 
       <PageTitle 
-        title={titleDataSource?.title || '...'}
+        title={titleDataSource?.title}
         description={''}
       />
 
