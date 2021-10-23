@@ -211,7 +211,7 @@ ul.header-menu-list li a {
 
 .page-title {
   text-align: center;
-  padding: 60px 15px 0 15px;
+  padding: 30px 15px 0 15px;
 }
 
 .page-title h1 {
@@ -907,4 +907,58 @@ input[type='radio'].show-bg:checked + label {
     height: 70px;
     position: relative;
   }
+}
+
+/* Cart/Bag design */
+
+.canvas-cart-title-icon {
+  padding-right: 10px;
+}
+
+.canvas-cart-title-text {
+  text-align: center;
+}
+
+.cart-close {
+  background-color: white;
+  border-radius: 50px;
+}
+
+.cart-close:hover {
+  background-color: rgb(151, 148, 148);
+  border-radius: 50px;
+}
+
+.cart-continue-shopping {
+  width: 100%;
+  height: 45px;
+  border: 2px solid white;
+}
+
+/* Collection product */
+.product-img {
+  cursor: pointer;
+}
+
+.product-name-description {
+  cursor: pointer;
+}
+
+.img-hover-zoom {
+  height: 530px; 
+  overflow: hidden; /* [1.2] Hide the overflowing of child elements */
+}
+
+.img-hover-zoom img {
+  transition: transform .5s ease;
+}
+
+.img-zoom:hover {
+  transform: scale(1.5);
+}
+
+.other-img {
+  border: 3px solid rgb(141, 143, 142);
+  margin-bottom: 5px;
+  cursor: pointer;
 }

@@ -1,6 +1,7 @@
 import type {NextComponentType} from 'next'
 import Link from 'next/link'
 import { useAuth, useCart } from "@saleor/sdk";
+import Bag from '../Bag';
 
 const Header: NextComponentType = () => {
   const {user, signOut} = useAuth()
@@ -49,15 +50,7 @@ const Header: NextComponentType = () => {
                     alt=""
                     srcSet=""
                   />
-                  <span className="header-cart-items">
-                    <img
-                      src="/assets/Icon awesome-shopping-bag.svg"
-                      className="header-icon"
-                      alt=""
-                      srcSet=""
-                    />
-                    <span>0</span>
-                  </span>
+                  <Bag />
                 </div>
               </div>
             </div>

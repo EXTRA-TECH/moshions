@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import { Builder } from "@builder.io/react";
+import Bag from './Bag'
 
 const Navbar = () => {
   return (
@@ -36,7 +37,8 @@ const Navbar = () => {
                 alt=""
                 srcSet=""
               />
-              <span className="header-cart-items">
+              <Bag />
+              {/* <span className="header-cart-items">
                 <img
                   src="/assets/Icon awesome-shopping-bag.svg"
                   className="header-icon"
@@ -44,7 +46,7 @@ const Navbar = () => {
                   srcSet=""
                 />
                 <span>0</span>
-              </span>
+              </span> */}
             </div>
           </div>
         </div>
