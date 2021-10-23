@@ -4,7 +4,7 @@ import {useState} from 'react'
 
 const Product = () => {
   const [defaultImg, setDefaultImg] = useState("/assets/Image Wrapper@2x.png")
-  const handleChangeImage = (imgUrl) => {
+  const handleChangeImage = (imgUrl: string) => {
     setDefaultImg(imgUrl)
   }
   return (
@@ -25,8 +25,18 @@ const Product = () => {
               <div className="col-lg-6 col-md-6 col-ms-12 col-xs-12 pr--40">
                 <div className="row">
                   <div className="col-md-2">
-                    <img src="/assets/product1.svg" onClick={() => handleChangeImage("/assets/product1.svg")} className="w-100 other-img" alt="" />
-                    <img src="/assets/Image Wrapper@2x.png" onClick={() => handleChangeImage("/assets/Image Wrapper@2x.png")} className="w-100 other-img" alt="" />
+                    <img 
+                      src="/assets/product1.svg" 
+                      onClick={() => handleChangeImage("/assets/product1.svg")} 
+                      className="w-100 other-img" 
+                      alt="" 
+                    />
+                    <img 
+                      src="/assets/Image Wrapper@2x.png" 
+                      onClick={() => handleChangeImage("/assets/Image Wrapper@2x.png")} 
+                      className="w-100 other-img" 
+                      alt="" 
+                    />
                   </div>
                   <div className="col-md-10 img-hover-zoom">
                     <img src={defaultImg} className="w-100 img-zoom" alt="" />
