@@ -32,16 +32,16 @@ const MadeToWear = () => {
         <div className="container">
           <div className="py-4">
             <div className="photo-row">
-              <img src="assets/Bespoke-2.png" className="w-100p" alt="" srcSet="" />
+              <img src="/assets/Bespoke-2.png" className="w-100p" alt="" srcSet="" />
               <img
-                src="assets/Bespoke-2-2.png"
+                src="/assets/Bespoke-2-2.png"
                 className="w-100p"
                 alt=""
                 srcSet=""
               />
             </div>
             <img
-              src="assets/Bespoke-Made-to-Measure.jpg"
+              src="/assets/Bespoke-Made-to-Measure.jpg"
               className="w-100p"
               alt=""
               srcSet=""

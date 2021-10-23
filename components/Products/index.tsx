@@ -46,7 +46,45 @@ const Products = () => {
   // }
 
   let titleDataSource = pageTitleSource?.filter((el) => el.category === category)[0]
-  console.log(titleDataSource)
+  
+  const dataSource = [
+    {
+      name: 'Josi Dress',
+      imageUrl: '/assets/product1.svg',
+      colors: ['bg-black'],
+      price: 'RWF 311,000'
+    },
+    {
+      name: 'Mwimba Dress',
+      imageUrl: '/assets/product2.svg',
+      colors: ['yellow'],
+      price: 'RWF 311,000'
+    },
+    {
+      name: 'Bucura Wrap Dress',
+      imageUrl: '/assets/product3.svg',
+      colors: ['yellow'],
+      price: 'RWF 311,000'
+    },
+    {
+      name: 'Josi Dress',
+      imageUrl: '/assets/product1.svg',
+      colors: ['bg-black'],
+      price: 'RWF 311,000'
+    },
+    {
+      name: 'Mwimba Dress',
+      imageUrl: '/assets/product2.svg',
+      colors: ['yellow'],
+      price: 'RWF 311,000'
+    },
+    {
+      name: 'Bucura Wrap Dress',
+      imageUrl: '/assets/product3.svg',
+      colors: ['yellow'],
+      price: 'RWF 311,000'
+    },
+  ]
 
   return (
     <div className="wrapper">
@@ -110,112 +148,13 @@ const Products = () => {
             </div>
 
             <div className="row">
-              <div className="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                <div className="w-100p item">
-                  <img
-                    src="/assets/product1.svg"
-                    alt=""
-                    className="w-100p"
-                    srcSet=""
-                  />
-                  <div className="item-details">
-                    <div className="item-label">
-                      <h4>Josi Dress</h4>
-                      <span>RWF 310,000</span>
-                    </div>
-                    <span className="bg-black item-color"></span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                <div className="w-100p item">
-                  <img
-                    src="/assets/product2.svg"
-                    alt=""
-                    className="w-100p"
-                    srcSet=""
-                  />
-                  <div className="item-details">
-                    <div className="item-label">
-                      <h4>Mwimba Dress</h4>
-                      <span>RWF 310,000</span>
-                    </div>
-                    <span className="yellow item-color"></span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                <div className="w-100p item">
-                  <img
-                    src="/assets/product3.svg"
-                    alt=""
-                    className="w-100p"
-                    srcSet=""
-                  />
-                  <div className="item-details">
-                    <div className="item-label">
-                      <h4>Bucura Wrap Dress</h4>
-                      <span>RWF 310,000</span>
-                    </div>
-                    <span className="orange item-color"></span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                <div className="w-100p item">
-                  <img
-                    src="/assets/product1.svg"
-                    alt=""
-                    className="w-100p"
-                    srcSet=""
-                  />
-                  <div className="item-details">
-                    <div className="item-label">
-                      <h4>Josi Dress</h4>
-                      <span>RWF 310,000</span>
-                    </div>
-                    <span className="bg-black item-color"></span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                <div className="w-100p item">
-                  <img
-                    src="/assets/product2.svg"
-                    alt=""
-                    className="w-100p"
-                    srcSet=""
-                  />
-                  <div className="item-details">
-                    <div className="item-label">
-                      <h4>Mwimba Dress</h4>
-                      <span>RWF 310,000</span>
-                    </div>
-                    <span className="yellow item-color"></span>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                <div className="w-100p item">
-                  <img
-                    src="/assets/product3.svg"
-                    alt=""
-                    className="w-100p"
-                    srcSet=""
-                  />
-                  <div className="item-details">
-                    <div className="item-label">
-                      <h4>Bucura Wrap Dress</h4>
-                      <span>RWF 310,000</span>
-                    </div>
-                    <span className="bg-black item-color"></span>
-                  </div>
-                </div>
-              </div>
+              {
+                dataSource?.map((el, i) => {
+                  return (
+                    <CollectionProduct key={i} dataSource={el} />
+                  )
+                })
+              }
             </div>
           </div>
         </div>
