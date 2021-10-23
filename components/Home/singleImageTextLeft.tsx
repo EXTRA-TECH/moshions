@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 const SingleImageTextLeft = () => {
   return (
     <>
@@ -8,12 +10,17 @@ const SingleImageTextLeft = () => {
           <h1>SHOP MOSHIONS SS 21</h1>
 
           <ul>
-            <li><a href="#">MEN</a></li>
-            <li><a href="#">WOMEN</a></li>
+            <li><Link href="/products?category=men"><a href="#">MEN</a></Link></li>
+            <li><Link href="/products?category=accessories"><a href="#">ACCESSORIES</a></Link></li>
+
+            
+            <li><Link href="/products?category=women"><a href="#">WOMEN</a></Link></li>
             <li>
-              <a href="#">
-                <span className="hide-small-phone">FOOTWEAR & </span> ACCESSORIES</a
-              >
+              <Link href="/products?category=accessories">
+                <a href="#">
+                  <span className="hide-small-phone">FOOTWEAR & </span> ACCESSORIES
+                </a>
+              </Link>
             </li>
           </ul>
         </div>

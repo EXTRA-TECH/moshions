@@ -1,40 +1,52 @@
-/* eslint-disable react/no-unescaped-entities */
-import Link from 'next/link'
+import Head from 'next/head'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 
-const Bespoke = () => {
+const MadeToWear = () => {
   return (
     <>
       <div className="wrapper">
       <Navbar />
 
       <div className="page-title">
-        <h1>BESPOKE</h1>
+        <h1>MADE TO MESURE</h1>
         <p>
-          Everyone is unique: our bespoke experience gives fulfilment to that.
+          Our experienced tailors are ready to make quintessential custom
+          clothing to enforce your look.
         </p>
         <p>
-          With bespoke-tailoring, you're invited to interact with the Creative
-          Director on how your one-of outfit should turn out. Moshions pays
-          attention to your preferences and brings each other to life. From the
-          contours, to the fabric, to the colours, to the button – until the
-          final structure sees the light of day.
+          Moshions gives you a luxury of personalizing the fabric, cuts, and the
+          finishing of your outfit. Moshions connects to you experienced tailors
+          to exchange ideas on designs that reflect your personality.
         </p>
         <p>
-          At Moshions, bespoke is the art of collaborating with the customer
-          step by step. It's one-of-a-kind service that provides a wide range of
-          choices.
-        </p>
-        <p>
-          Our team is always excited to put their creativity; to making couture
-          that enhances your true character.
+          A timely chat for a timeless creation. Not only is made-to-measure a
+          respected process at Moshions, the team follows up on your outfit and
+          updates you as soon as it’s available. We believe customer service
+          should always resonate with production identity; providing the best is
+          what we do best.
         </p>
       </div>
 
       <section className="middle-section">
         <div className="container">
-          <img src="/assets/Bespoke-photo.jpg" className="w-100p" alt="" />
+          <div className="py-4">
+            <div className="photo-row">
+              <img src="assets/Bespoke-2.png" className="w-100p" alt="" srcSet="" />
+              <img
+                src="assets/Bespoke-2-2.png"
+                className="w-100p"
+                alt=""
+                srcSet=""
+              />
+            </div>
+            <img
+              src="assets/Bespoke-Made-to-Measure.jpg"
+              className="w-100p"
+              alt=""
+              srcSet=""
+            />
+          </div>
           <div className="form-container">
             <h1 className="form-title">BOOK AN APPOINTMENT</h1>
             <form>
@@ -61,9 +73,10 @@ const Bespoke = () => {
               <div className="form-group">
                 <label htmlFor="">Telephone</label>
                 <textarea className="form-control" rows={5}></textarea>
+                <span className="requiredField text-muted">* Required field</span>
               </div>
-              <div>
-                <button className="btn btnn-dark">SEND INQUIRY</button>
+              <div className="text-center py-5">
+                <button className="btn btn-dark px-4">SEND INQUIRY</button>
               </div>
             </form>
           </div>
@@ -75,4 +88,4 @@ const Bespoke = () => {
   )
 }
 
-export default Bespoke
+export default MadeToWear

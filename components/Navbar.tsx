@@ -22,10 +22,10 @@ const Navbar = () => {
             </a>
             <div id="menu" className="header-menu menu-global">
               <ul className="header-menu-list">
-                <li><Link href="/products"><a href="#">MEN</a></Link></li>
-                <li><Link href="/products"><a href="#">WOMEN</a></Link></li>
-                <li><Link href="/products"><a href="#">ACCESSORIES</a></Link></li>
-                <li><Link href="/products"><a href="#">THE BRAND</a></Link></li>
+                <li><Link href="/products?category=men"><a href="#">MEN</a></Link></li>
+                <li><Link href="/products?category=women"><a href="#">WOMEN</a></Link></li>
+                <li><Link href="/products?category=accessories"><a href="#">ACCESSORIES</a></Link></li>
+                <li><Link href="/brand"><a href="#">THE BRAND</a></Link></li>
               </ul>
               <a href="#" className="close-menu show-mobile">x</a>
             </div>

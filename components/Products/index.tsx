@@ -1,70 +1,61 @@
 import {useQuery} from '@apollo/react-hooks'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import {MEMBERS} from '../../gql/example'
 import Navbar from '../Navbar'
-import CollectionFilter from './components/CollectionFilter'
-import CollectionProduct from './components/CollectionProduct'
+import CollectionFilter from './CollectionFilter'
+import CollectionProduct from './CollectionProduct'
 import Footer from '../Footer'
 import Page from '../Page'
-import PageTitle from './components/PageTitle'
+import PageTitle from './PageTitle'
+import React, { useState, useEffect } from 'react'
 
 const Products = () => {
   // Include Navbar, Filter
+  // const {title, setTitle} = useState<string>("")
+  const router = useRouter()
+  const {category} = router.query
+
+  const pageTitleSource = [
+    {
+      category: 'men',
+      title: 'MENSWEAR',
+      descriptionTop: '',
+      descriptionBottom: ''
+    },
+    {
+      category: 'women',
+      title: 'WOMENSWEAR',
+      descriptionTop: '',
+      descriptionBottom: ''
+    },
+    {
+      category: 'accessories',
+      title: 'ACCESSORIES',
+      descriptionTop: '',
+      descriptionBottom: ''
+    },
+  ]
+
+  // const getTitleAndDescription = () => {
+  //   const titleData = 
+  //   if (titleData.length) {
+  //     setTitle(titleData[0]?.title)
+  //     // return titleData[0]?.title, titleData[0]?.descriptionTop, titleData[0]?.descriptionBottom
+  //   }
+  // }
+
+  let titleDataSource = pageTitleSource?.filter((el) => el.category === category)[0]
+  console.log(titleDataSource)
+
   return (
     <div className="wrapper">
-      <header className="header bg-black">
-        <div className="container">
-          <div className="header-top">
-            <div className="header-logo-container">
-              <Link href="/">
-                <img
-                  src="/assets/MoShiOns_LoGo_White.svg"
-                  alt="Motions"
-                  className="logo"
-                  srcSet=""
-                />
-              </Link>
-            </div>
-            <a href="#menu" className="show-mobile mobile-left showmenu">
-              <img src="/assets/menu.svg" className="header-icon" alt="" srcSet="" />
-            </a>
-            <div id="menu" className="header-menu menu-global">
-              <ul className="header-menu-list">
-                <li><a href="#">MEN</a></li>
-                <li><a href="#">WOMEN</a></li>
-                <li><a href="#">ACCESSORIES</a></li>
-                <li><a href="#">THE BRAND</a></li>
-              </ul>
-              <a href="#" className="close-menu show-mobile">x</a>
-            </div>
-            <div className="header-shop-actions">
-              <img
-                src="/assets/Icon feather-heart.svg"
-                className="header-icon"
-                alt=""
-                srcSet=""
-              />
-              <span className="header-cart-items">
-                <img
-                  src="/assets/Icon awesome-shopping-bag.svg"
-                  className="header-icon"
-                  alt=""
-                  srcSet=""
-                />
-                <span>0</span>
-              </span>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Navbar />
 
-      <div className="page-title">
-        <h1>WOMENSWEAR</h1>
-        <p>
-          A new array of tops, jackets, cardigans, skirts <br />
-          and pants with finest embroidery, beadwork and custom prints.
-        </p>
-      </div>
+      <PageTitle 
+        title={titleDataSource?.title || '...'}
+        description={''}
+      />
 
       <section className="middle-section">
         <div className="container">
