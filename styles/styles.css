@@ -945,7 +945,7 @@ input[type='radio'].show-bg:checked + label {
 }
 
 .img-hover-zoom {
-  height: 530px; 
+  /* height: 530px;  */
   overflow: hidden; /* [1.2] Hide the overflowing of child elements */
 }
 

@@ -1,12 +1,36 @@
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
 import {useState} from 'react'
+import CollectionProduct from '../../../components/Products/CollectionProduct'
+import ProductAccord from '../../../components/Products/ProductAccordation'
 
 const Product = () => {
   const [defaultImg, setDefaultImg] = useState("/assets/Image Wrapper@2x.png")
   const handleChangeImage = (imgUrl: string) => {
     setDefaultImg(imgUrl)
   }
+
+  const dataSource = [
+    {
+      name: 'Josi Dress',
+      imageUrl: '/assets/product1.svg',
+      colors: ['bg-black'],
+      price: 'RWF 311,000'
+    },
+    {
+      name: 'Mwimba Dress',
+      imageUrl: '/assets/product2.svg',
+      colors: ['yellow'],
+      price: 'RWF 311,000'
+    },
+    {
+      name: 'Bucura Wrap Dress',
+      imageUrl: '/assets/product3.svg',
+      colors: ['yellow'],
+      price: 'RWF 311,000'
+    }
+  ]
+
   return (
     <>
       <div className="wrapper">
@@ -43,7 +67,7 @@ const Product = () => {
                   </div>
                 </div>
               </div>
-              <div className="col-lg-6 col-md-6 col-ms-12 col-xs-12">
+              <div className="col-lg-6 col-md-6 col-ms-12 col-xs-12 py-2">
                 <h3 className="product-name">Umwitero Shirt</h3>
                 <h4 className="product-price">Frw 165,000</h4>
                 <div className="w-100p">
@@ -116,8 +140,19 @@ const Product = () => {
                     />
                   </div>
                 </div>
+                <ProductAccord />
               </div>
             </div>
+          </div>
+          <div className="h5 pt-5 text-center text-uppercase">Related Collection</div>
+          <div className="row py-3">
+            {
+              dataSource?.map((el, i) => {
+                return (
+                  <CollectionProduct key={i} dataSource={el} />
+                )
+              })
+            }
           </div>
         </div>
         <Footer />
