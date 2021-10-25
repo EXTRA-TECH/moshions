@@ -10,6 +10,7 @@ import Page from '../Page'
 import PageTitle from './PageTitle'
 import React, { useState, useEffect } from 'react'
 
+
 const Products = () => {
   // Include Navbar, Filter
   // const {title, setTitle} = useState<string>("")

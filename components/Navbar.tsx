@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { Builder } from "@builder.io/react";
 import Bag from './Bag'
 
-const Navbar = () => {
+const Navbar = ({cartItemsQuantity, }: any) => {
   return (
     <header className="header bg-black">
         <div className="container">
@@ -37,7 +37,7 @@ const Navbar = () => {
                 alt=""
                 srcSet=""
               />
-              <Bag />
+              <Bag cartItemsQuantity={cartItemsQuantity} />
               {/* <span className="header-cart-items">
                 <img
                   src="/assets/Icon awesome-shopping-bag.svg"

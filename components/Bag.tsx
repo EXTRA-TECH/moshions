@@ -1,6 +1,6 @@
 import Router from "next/router"
 
-const Bag = () => {
+const Bag = ({cartItemsQuantity}: any) => {
 
   const handleContinueShopping = () => {
     Router.push('/products')
@@ -16,7 +16,11 @@ const Bag = () => {
             alt=""
             srcSet=""
           />
-          <span>0</span>
+          {cartItemsQuantity > 0 ? (
+            <span>
+              {cartItemsQuantity}
+            </span>
+          ) : null}
         </a>
       </span>
       <div className="offcanvas offcanvas-end bg-dark" data-bs-scroll="true" data-bs-backdrop="false" tabIndex={-1} id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
