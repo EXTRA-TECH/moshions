@@ -8,12 +8,13 @@ import CollectionProduct from './CollectionProduct'
 import Footer from '../Footer'
 import Page from '../Page'
 import PageTitle from './PageTitle'
+import { MainMenu } from '../MainMenu'
 import React, { useState, useEffect } from 'react'
+// import { generateProductUrl, maybe } from "../../core/utils";
+// import { TypedFeaturedProductsQuery } from "../ProductFeatured/queries";
 
 
-const Products = () => {
-  // Include Navbar, Filter
-  // const {title, setTitle} = useState<string>("")
+const Products = ({title}: any) => {
   const router = useRouter()
   const {category} = router.query
 
@@ -37,14 +38,6 @@ const Products = () => {
       descriptionBottom: ''
     },
   ]
-
-  // const getTitleAndDescription = () => {
-  //   const titleData = 
-  //   if (titleData.length) {
-  //     setTitle(titleData[0]?.title)
-  //     // return titleData[0]?.title, titleData[0]?.descriptionTop, titleData[0]?.descriptionBottom
-  //   }
-  // }
 
   let titleDataSource = pageTitleSource?.filter((el) => el.category === category)[0]
   
@@ -89,7 +82,7 @@ const Products = () => {
 
   return (
     <div className="wrapper">
-      <Navbar />
+      <MainMenu />
 
       <PageTitle 
         title={titleDataSource?.title}
@@ -150,11 +143,9 @@ const Products = () => {
 
             <div className="row">
               {
-                dataSource?.map((el, i) => {
-                  return (
-                    <CollectionProduct key={i} dataSource={el} />
-                  )
-                })
+                dataSource?.map((el, i) => (
+                  <CollectionProduct key={i} dataSource={el} />
+                ))
               }
             </div>
           </div>

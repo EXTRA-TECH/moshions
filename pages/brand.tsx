@@ -1,5 +1,6 @@
 import Footer from '../components/Footer'
 import Head from 'next/head'
+import {MainMenu} from '../components/MainMenu'
 import Navbar from '../components/Navbar'
 
 const Brand = () => {
@@ -12,7 +13,7 @@ const Brand = () => {
         <Navbar />
 
         <div className="main-pic-holder">
-          <img src="/assets/pic-about.jpg" className="w-100p" alt="" srcSet="" />
+          <img src="/found-top-img.svg" className="w-100" alt="" srcSet="" />
         </div>
 
         <div className="about">

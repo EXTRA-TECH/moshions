@@ -1,8 +1,8 @@
 import gql from "graphql-tag";
-import { TypedQuery } from "../../core/queries";
-import { MainMenu } from "./gqlTypes/MainMenu";
+// import { TypedQuery } from "../../core/queries";
+// import { MainMenu } from "./gqlTypes/MainMenu";
 
-export const mainMenu = gql`
+export const MAIN_MENU = gql`
   fragment MainMenuSubItem on MenuItem {
     id
     name
@@ -43,4 +43,18 @@ export const mainMenu = gql`
   }
 `;
 
-export const TypedMainMenuQuery = TypedQuery<MainMenu, {}>(mainMenu);
+export const CATEGORIES = gql`
+  query {
+    categories(first: 3) {
+      edges {
+        node {
+          id
+          name
+          slug
+        }
+      }
+    }
+  }
+`
+
+// export const TypedMainMenuQuery = TypedQuery<MainMenu, {}>(mainMenu);

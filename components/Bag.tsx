@@ -17,7 +17,7 @@ const Bag = ({cartItemsQuantity}: any) => {
             srcSet=""
           />
           {cartItemsQuantity > 0 ? (
-            <span>
+            <span className="cart-number">
               {cartItemsQuantity}
             </span>
           ) : null}
