@@ -10,8 +10,6 @@ import Page from '../Page'
 import PageTitle from './PageTitle'
 import { MainMenu } from '../MainMenu'
 import React, { useState, useEffect } from 'react'
-// import { generateProductUrl, maybe } from "../../core/utils";
-// import { TypedFeaturedProductsQuery } from "../ProductFeatured/queries";
 
 
 const Products = ({title}: any) => {
