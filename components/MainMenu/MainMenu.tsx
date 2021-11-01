@@ -2,12 +2,11 @@ import Navbar from '../Navbar'
 import Link from 'next/link'
 import Bag from '../Bag';
 import { useAuth, useCart } from "@saleor/sdk";
-import {MAIN_MENU, CATEGORIES} from './queries'
+import {CATEGORIES} from './queries'
 import {useQuery} from '@apollo/react-hooks'
 
 
 const MainMenu = () => {
-  const { user, signOut } = useAuth();
   const { items } = useCart();
 
   const {data, loading, error} = useQuery(CATEGORIES)
@@ -36,9 +35,9 @@ const MainMenu = () => {
           </a>
           <div id="menu" className="header-menu menu-global">
             <ul className="header-menu-list">
-              {loading && <div className="spinner-border text-light" role="status">
+              {/* {loading && <div className="spinner-border text-light" role="status">
                 <span className="sr-only"></span>
-              </div>}
+              </div>} */}
               {
                 data?.categories?.edges?.map((el:any, i:any) => {
                   return (
@@ -50,7 +49,7 @@ const MainMenu = () => {
                   )
                 })
               }
-              <li><Link href="/brand"><a href="#">THE BRAND</a></Link></li>
+              {/* <li><Link href="/brand"><a href="#">THE BRAND</a></Link></li> */}
             </ul>
             <a href="#" className="close-menu show-mobile">x</a>
           </div>

@@ -1,158 +1,100 @@
 import {useQuery} from '@apollo/react-hooks'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import {MEMBERS} from '../../gql/example'
-import Navbar from '../Navbar'
-import CollectionFilter from './CollectionFilter'
-import CollectionProduct from './CollectionProduct'
-import Footer from '../Footer'
-import Page from '../Page'
-import PageTitle from './PageTitle'
-import { MainMenu } from '../MainMenu'
+import CollectionFilter from './components/CollectionFilter'
+import CollectionProduct from './components/CollectionProduct'
+import PageTitle from './components/PageTitle'
 import React, { useState, useEffect } from 'react'
+import MainContainer from '../MainContainer'
+import {CATEGORY} from './queries'
+import Loader from './../Loader'
 
 
-const Products = ({title}: any) => {
+const Products = () => {
   const router = useRouter()
   const {category} = router.query
 
-  const pageTitleSource = [
-    {
-      category: 'men',
-      title: 'MENSWEAR',
-      descriptionTop: '',
-      descriptionBottom: ''
-    },
-    {
-      category: 'women',
-      title: 'WOMENSWEAR',
-      descriptionTop: '',
-      descriptionBottom: ''
-    },
-    {
-      category: 'accessories',
-      title: 'ACCESSORIES',
-      descriptionTop: '',
-      descriptionBottom: ''
-    },
-  ]
-
-  let titleDataSource = pageTitleSource?.filter((el) => el.category === category)[0]
+  const {data, loading, error} = useQuery(CATEGORY, {
+    variables: {
+      slug: category
+    }
+  })
   
-  const dataSource = [
+  if (loading) {
+    return <Loader />
+  }
+
+  let description = ''
+  let descriptionArray: any[] = []
+
+  if (data) {
+    let findDesc = JSON.parse(data?.category?.description)
+    if (findDesc?.blocks?.length) {
+      findDesc?.blocks?.map((el:any) => {
+        descriptionArray.push(el?.data?.text)
+      })
+    }
+    console.log(data?.category?.products?.edges[0]?.node?.id)
+  }
+  
+  const dataSourceExample = [
     {
       name: 'Josi Dress',
       imageUrl: '/assets/product1.svg',
       colors: ['bg-black'],
       price: 'RWF 311,000'
     },
-    {
-      name: 'Mwimba Dress',
-      imageUrl: '/assets/product2.svg',
-      colors: ['yellow'],
-      price: 'RWF 311,000'
-    },
-    {
-      name: 'Bucura Wrap Dress',
-      imageUrl: '/assets/product3.svg',
-      colors: ['yellow'],
-      price: 'RWF 311,000'
-    },
-    {
-      name: 'Josi Dress',
-      imageUrl: '/assets/product1.svg',
-      colors: ['bg-black'],
-      price: 'RWF 311,000'
-    },
-    {
-      name: 'Mwimba Dress',
-      imageUrl: '/assets/product2.svg',
-      colors: ['yellow'],
-      price: 'RWF 311,000'
-    },
-    {
-      name: 'Bucura Wrap Dress',
-      imageUrl: '/assets/product3.svg',
-      colors: ['yellow'],
-      price: 'RWF 311,000'
-    },
+    // {
+    //   name: 'Mwimba Dress',
+    //   imageUrl: '/assets/product2.svg',
+    //   colors: ['yellow'],
+    //   price: 'RWF 311,000'
+    // },
+    // {
+    //   name: 'Bucura Wrap Dress',
+    //   imageUrl: '/assets/product3.svg',
+    //   colors: ['yellow'],
+    //   price: 'RWF 311,000'
+    // },
+    // {
+    //   name: 'Josi Dress',
+    //   imageUrl: '/assets/product1.svg',
+    //   colors: ['bg-black'],
+    //   price: 'RWF 311,000'
+    // },
+    // {
+    //   name: 'Mwimba Dress',
+    //   imageUrl: '/assets/product2.svg',
+    //   colors: ['yellow'],
+    //   price: 'RWF 311,000'
+    // },
+    // {
+    //   name: 'Bucura Wrap Dress',
+    //   imageUrl: '/assets/product3.svg',
+    //   colors: ['yellow'],
+    //   price: 'RWF 311,000'
+    // },
   ]
 
   return (
-    <div className="wrapper">
-      <MainMenu />
+    <MainContainer>
 
       <PageTitle 
-        title={titleDataSource?.title}
-        description={''}
+        title={data?.category?.name}
+        description={description}
+        descriptionArray={descriptionArray}
       />
 
       <section className="middle-section">
         <div className="container">
           <div className="collections">
-            <div className="collection-options">
-              <div className="options-container">
-                <div className="option">
-                  <span>Category</span>
-                  <img
-                    src="/assets/Icon ionic-ios-arrow-down.svg"
-                    alt=""
-                    srcSet=""
-                  />
-                </div>
-                <div className="option">
-                  <span>Color</span>
-                  <img
-                    src="/assets/Icon ionic-ios-arrow-down.svg"
-                    alt=""
-                    srcSet=""
-                  />
-                </div>
-                <div className="option">
-                  <span>Size</span>
-                  <img
-                    src="/assets/Icon ionic-ios-arrow-down.svg"
-                    alt=""
-                    srcSet=""
-                  />
-                </div>
-              </div>
-              <div className="options-container">
-                <div className="option d-flex-start">
-                  <span>Model view</span>
-                  <div className="form-check form-switch">
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      id="flexSwitchCheckDefault"
-                    />
-                  </div>
-                </div>
-                <div className="option">
-                  <span>Sort By</span>
-                  <img
-                    src="/assets/Icon ionic-ios-arrow-down.svg"
-                    alt=""
-                    srcSet=""
-                  />
-                </div>
-              </div>
-            </div>
-
-            <div className="row">
-              {
-                dataSource?.map((el, i) => (
-                  <CollectionProduct key={i} dataSource={el} />
-                ))
-              }
-            </div>
+            <CollectionFilter />
+            <CollectionProduct dataSource={data?.category?.products?.edges} />
           </div>
         </div>
       </section>
-      <Footer />
-    </div>
-
-  )
+    </MainContainer>
+  );
 }
 
 export default Products
