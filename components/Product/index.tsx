@@ -6,6 +6,8 @@ import { useRouter } from 'next/router'
 import { useQuery } from 'react-apollo'
 import {PRODUCT} from './queries'
 import { useEffect } from 'react'
+import Link from 'next/link'
+import {priceToString} from '../../lib/helpers'
 
 const ProductComponent = () => {
   const router = useRouter()
@@ -36,9 +38,9 @@ const ProductComponent = () => {
           <div className="container">
             <nav aria-label="breadcrumb">
               <ol className="breadcrumb">
-                <li className="breadcrumb-item"><a href="#">Home</a></li>
-                <li className="breadcrumb-item"><a href="#">Collection</a></li>
-                <li className="breadcrumb-item active">Product name</li>
+                <li className="breadcrumb-item"><Link href="/"><a href="#">Home</a></Link></li>
+                <li className="breadcrumb-item"><Link href={`/products?category=${data?.product?.category?.slug}`}><a href="#">{data?.product?.category?.name}</a></Link></li>
+                <li className="breadcrumb-item active">{data?.product?.name}</li>
               </ol>
             </nav>
             <div className="row">
@@ -64,48 +66,31 @@ const ProductComponent = () => {
               </div>
               <div className="col-lg-6 col-md-6 col-ms-12 col-xs-12 py-2">
                 <h3 className="product-name">{data?.product?.name}</h3>
-                <h4 className="product-price">Frw {data?.product?.pricing?.priceRange?.start?.net?.amount}</h4>
-                <div className="w-100p">
+                <h4 className="product-price">{data && priceToString({amount: data?.product?.pricing?.priceRange?.start?.net?.amount, currency: 'RWF'}, 'RWF')} </h4>
+                {data && data?.product?.metadata.filter((el:any) => el.key === 'color').length > 0 && <div className="w-100p">
                   <p className="option-title">Colour</p>
                   <div className="product-colors">
                     {
                       data && data?.product?.metadata?.map((el:any, i:any) => {
-                        if (el.key == "color") {
+                        if (el.key === "color") {
+                          console.log(el.value)
                           return (
-                            <span className="">
+                            <span key={i} className="">
                               <input
                                 type="radio"
                                 name="color"
-                                id="black"
+                                // id="black"
                                 style={{backgroundColor: `${el.value}`}}
                                 className="d-none show-check"
                               />
-                              <label htmlFor="black" className="black" style={{backgroundColor: `${el.value}`}}></label>
+                              <label htmlFor="color" className="product-color" style={{backgroundColor: el.value, color: `${el.value}`}}></label>
                             </span>
                           )
                         } return null
                       })
                     }
-                    {/* <span className="">
-                      <input
-                        type="radio"
-                        name="color"
-                        id="orange"
-                        className="d-none show-check"
-                      />
-                      <label htmlFor="orange" className="orange"></label>
-                    </span>
-                    <span className="">
-                      <input
-                        type="radio"
-                        name="color"
-                        id="gold"
-                        className="d-none show-check"
-                      />
-                      <label htmlFor="gold" className="gold"></label>
-                    </span> */}
                   </div>
-                </div>
+                </div>}
 
                 <div className="w-100p">
                   <p className="option-title">SIZE</p>

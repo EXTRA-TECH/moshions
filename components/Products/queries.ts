@@ -15,6 +15,10 @@ export const CATEGORY = gql`
             id
             name
             slug
+            metadata {
+              key
+              value
+            }
             pricing {
               priceRange {
                 start {

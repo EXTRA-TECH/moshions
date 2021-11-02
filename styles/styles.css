@@ -299,10 +299,11 @@ ul.header-menu-list li a {
 .item-label h4 {
   margin-bottom: 0;
   font-size: 18px;
+  font-weight: 550;
 }
 
 .item-label span {
-  font-weight: 400;
+  font-weight: 200;
   font-size: 16px;
 }
 
@@ -573,6 +574,13 @@ form {
   .overlay-section-img-holder img {
     height: auto;
   }
+}
+
+.product-color {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: block;
 }
 
 .black,
@@ -942,6 +950,14 @@ input[type='radio'].show-bg:checked + label {
 /* Collection product */
 .product-img {
   cursor: pointer;
+  overflow: hidden;
+  height: 4.4in;
+}
+
+@media (min-width: 1448px) {
+  .product-img {
+    height: 5.8in;
+  }
 }
 
 .product-name-description {
@@ -965,6 +981,8 @@ input[type='radio'].show-bg:checked + label {
   border: 3px solid rgb(141, 143, 142);
   margin-bottom: 5px;
   cursor: pointer;
+  height: 0.7in;
+  width: 100%;
 }
 
 

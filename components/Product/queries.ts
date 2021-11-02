@@ -6,6 +6,11 @@ export const PRODUCT = gql`
   ) {
   product(id: $id, channel: "channel-rwf") {
     id
+    category {
+      name
+      slug
+      id
+    }
     name
     description
     slug
@@ -14,6 +19,16 @@ export const PRODUCT = gql`
       id
       alt
       sortOrder
+    }
+    variants {
+      media {
+        url
+        alt
+      }
+      metadata {
+        key
+        value
+      }
     }
     metadata {
       key

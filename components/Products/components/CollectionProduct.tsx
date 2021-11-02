@@ -13,6 +13,11 @@ const CollectionProduct = ({dataSource}: any) => {
             <ProductCard key={i} dataSource={el} />
           ))
         }
+        {
+          dataSource?.map((el:any, i:any) => (
+            <ProductCard key={i} dataSource={el} />
+          ))
+        }
       </div>
     </>
   )

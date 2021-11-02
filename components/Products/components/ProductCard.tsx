@@ -1,4 +1,5 @@
 import Router from "next/router"
+import { priceToString } from "../../../lib/helpers"
 
 const ProductCard = ({dataSource}: any) => {
   if (dataSource?.node?.images?.length) {
@@ -19,9 +20,13 @@ const ProductCard = ({dataSource}: any) => {
               <h4 className="product-name-description" onClick={() => {
                 Router.push('/products/[id]', `/products/${dataSource?.node?.id}`)
               }}>{dataSource?.node?.name}</h4>
-              <span>{`${dataSource?.node?.pricing?.priceRange?.start?.net?.amount}`}</span>
+              <span>{priceToString({amount: dataSource?.node?.pricing?.priceRange?.start?.net?.amount, currency: 'RWF'}, 'RWF')}</span>
             </div>
-            <span className={`${"dataSource?.colors[0]"} item-color`}></span>
+            {
+              dataSource?.node?.metadata?.map((el:any, i:any) => (
+                <span key={i} className="item-color" style={{backgroundColor: el.value}}></span>
+              ))
+            }
           </div>
         </div>
       </div>
