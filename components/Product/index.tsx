@@ -19,6 +19,10 @@ const ProductComponent = () => {
     }
   })
 
+  if (data) {
+    console.log(data)
+  }
+
   let defaultImage = ''
 
   if (data?.product?.images[0]?.url) {
@@ -66,7 +70,7 @@ const ProductComponent = () => {
               </div>
               <div className="col-lg-6 col-md-6 col-ms-12 col-xs-12 py-2">
                 <h3 className="product-name">{data?.product?.name}</h3>
-                <h4 className="product-price">{data && priceToString({amount: data?.product?.pricing?.priceRange?.start?.net?.amount, currency: 'RWF'}, 'RWF')} </h4>
+                <h4 className="product-price">{data && priceToString({amount: data?.product?.pricing?.priceRange?.start?.net?.amount || 0, currency: 'RWF'}, 'RWF')} </h4>
                 {data && data?.product?.metadata.filter((el:any) => el.key === 'color').length > 0 && <div className="w-100p">
                   <p className="option-title">Colour</p>
                   <div className="product-colors">

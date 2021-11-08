@@ -35,9 +35,11 @@ const MainMenu = () => {
           </a>
           <div id="menu" className="header-menu menu-global">
             <ul className="header-menu-list">
-              {/* {loading && <div className="spinner-border text-light" role="status">
-                <span className="sr-only"></span>
-              </div>} */}
+              {loading && <button className="btn btn-light" type="button" disabled>
+                <span className="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                <span className="visually-hidden">Loading...</span>
+              </button>
+              }
               {
                 data?.categories?.edges?.map((el:any, i:any) => {
                   return (
@@ -49,7 +51,7 @@ const MainMenu = () => {
                   )
                 })
               }
-              {/* <li><Link href="/brand"><a href="#">THE BRAND</a></Link></li> */}
+              {!loading && <li><Link href="/brand"><a href="#">THE BRAND</a></Link></li>}
             </ul>
             <a href="#" className="close-menu show-mobile">x</a>
           </div>
