@@ -1,9 +1,9 @@
 import type {NextComponentType} from 'next'
 import Link from 'next/link'
 import { useAuth, useCart } from "@saleor/sdk";
-import Bag from '../Bag';
+import Bag from '../../Bag';
 
-const Header: NextComponentType = () => {
+const Header = ({categorySource, loading}:any) => {
   const {user, signOut} = useAuth()
   const {items} = useCart()
 
@@ -36,20 +36,32 @@ const Header: NextComponentType = () => {
                 </a>
                 <div id="menu" className="header-menu menu-global home-menu">
                   <ul className="header-menu-list">
-                    <li><Link href="/products?category=men"><a href="#">MEN</a></Link></li>
-                    <li><Link href="/products?category=women"><a href="#">WOMEN</a></Link></li>
-                    <li><Link href="/products?category=accessories"><a href="#">ACCESSORIES</a></Link></li>
-                    <li><Link href="/brand"><a href="#">THE BRAND</a></Link></li>
+                    {loading && <button className="btn btn-light" type="button" disabled>
+                      <span className="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                      <span className="visually-hidden">Loading...</span>
+                    </button>
+                    }
+                    {
+                      categorySource?.categories?.edges?.map((el:any, i:any) => {
+                        return (
+                          <li key={i}>
+                            <Link href={`/products?category=${el.node.name.toLowerCase().trim()}`}>
+                              <a href="#" className="text-uppercase">{el.node.name}</a>
+                            </Link>
+                          </li>
+                        )
+                      })
+                    }
                   </ul>
                   <a href="#" className="close-menu show-mobile">x</a>
                 </div>
                 <div className="header-shop-actions">
-                  <img
+                  {/* <img
                     src="/assets/Icon feather-heart.svg"
                     className="header-icon"
                     alt=""
                     srcSet=""
-                  />
+                  /> */}
                   <Bag />
                 </div>
               </div>
@@ -69,22 +81,24 @@ const Header: NextComponentType = () => {
           </div>
 
           <div className="header-scroll hide-small-phone">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="ionicon scroll-down-chevron"
-              viewBox="0 0 512 512"
-              color="white"
-            >
-              <title>Chevron Down</title>
-              <path
-                fill="none"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="48"
-                d="M112 184l144 144 144-144"
-              />
-            </svg>
+            <a href="#video">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="ionicon scroll-down-chevron"
+                viewBox="0 0 512 512"
+                color="white"
+              >
+                <title>Chevron Down</title>
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="48"
+                  d="M112 184l144 144 144-144"
+                />
+              </svg>
+            </a>
           </div>
         </div>
         <div className="main-header-right">

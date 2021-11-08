@@ -56,12 +56,12 @@ const MainMenu = () => {
             <a href="#" className="close-menu show-mobile">x</a>
           </div>
           <div className="header-shop-actions">
-            <img
+            {/* <img
               src="/assets/Icon feather-heart.svg"
               className="header-icon"
               alt=""
               srcSet=""
-            />
+            /> */}
             <Bag cartItemsQuantity={cartItemsQuantity} />
           </div>
         </div>
