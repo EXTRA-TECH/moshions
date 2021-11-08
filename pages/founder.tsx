@@ -7,8 +7,12 @@ import MainContainer from '../components/MainContainer'
 const Brand = () => {
   return (
     <MainContainer>
-      <div className="main-pic-holder">
-        <img src="/found-top-img.svg" className="w-100p" alt="brand-main-image" />
+      {/* <div className="main-pic-holder">
+        <img src="/home-bottom.svg" className="w-100" alt="brand-main-image" />
+      </div> */}
+      <div></div>
+      <div>
+        <img src="/home-bottom.svg" className="w-100" alt="brand-main-image" />
       </div>
 
       <div className="about">

@@ -21,7 +21,7 @@ const DynamicCollection = ({dataSource, row, categorySource, loading}:any) => {
                 categorySource?.categories?.edges?.map((el:any, i:any) => {
                   return (
                     <li key={i}>
-                      <Link href={`/products?category=${el.node.name.toLowerCase().trim()}`}>
+                      <Link href={`/collection/${el.node.slug}`}>
                         <a href="#" className="text-uppercase">{el.node.name}</a>
                       </Link>
                     </li>
@@ -58,7 +58,7 @@ const DynamicCollection = ({dataSource, row, categorySource, loading}:any) => {
               categorySource?.categories?.edges?.map((el:any, i:any) => {
                 return (
                   <li key={i}>
-                    <Link href={`/products?category=${el.node.name.toLowerCase().trim()}`}>
+                    <Link href={`/collection/${el?.node?.slug}`}>
                       <a href="#" className="text-uppercase">{el.node.name}</a>
                     </Link>
                   </li>

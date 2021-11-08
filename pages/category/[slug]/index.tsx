@@ -1,7 +1,9 @@
+import CategoryComponent from "../../../components/Category"
+
 const Category = () => {
   return (
     <>
-      <div>Category</div>
+      <CategoryComponent />
     </>
   )
 }

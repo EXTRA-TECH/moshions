@@ -44,14 +44,14 @@ const MainMenu = () => {
                 data?.categories?.edges?.map((el:any, i:any) => {
                   return (
                     <li key={i}>
-                      <Link href={`/products?category=${el.node.name.toLowerCase().trim()}`}>
+                      <Link href={`/category/${el.node.name.toLowerCase().trim()}`}>
                         <a href="#" className="text-uppercase">{el.node.name}</a>
                       </Link>
                     </li>
                   )
                 })
               }
-              {!loading && <li><Link href="/brand"><a href="#">THE BRAND</a></Link></li>}
+              {/* {!loading && <li><Link href="/founder"><a href="#">THE BRAND</a></Link></li>} */}
             </ul>
             <a href="#" className="close-menu show-mobile">x</a>
           </div>
