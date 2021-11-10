@@ -57,4 +57,21 @@ export const CATEGORIES = gql`
   }
 `
 
+export const PRODUCT_VARIANT = gql`
+  query(
+    $id: ID!
+  ) {
+    productVariant(id: $id, channel: "channel-rwf") {
+      id
+      product {
+        id
+        images {
+          url
+          alt
+        }
+      }
+    }
+  }
+`
+
 // export const TypedMainMenuQuery = TypedQuery<MainMenu, {}>(mainMenu);

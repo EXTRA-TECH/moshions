@@ -3,15 +3,17 @@ import MainContainer from '../MainContainer'
 import {useState} from 'react'
 import ProductAccord from '../Products/components/ProductAccordation'
 import { useRouter } from 'next/router'
-import { useQuery } from '@apollo/react-hooks'
-import {PRODUCT} from './queries'
+import { useQuery, useMutation } from '@apollo/react-hooks'
+import {PRODUCT, CHECKOUT_CREATE} from './queries'
 import { useEffect } from 'react'
 import Link from 'next/link'
 import {priceToString} from '../../lib/helpers'
+import {useCart} from '@saleor/sdk'
 
 const ProductComponent = () => {
   const router = useRouter()
   const {id} = router.query
+  const {addItem} = useCart()
 
   const {data, loading, error} = useQuery(PRODUCT, {
     variables: {
@@ -19,9 +21,19 @@ const ProductComponent = () => {
     }
   })
 
-  if (data) {
-    console.log(data)
-  }
+  const [selectedItem, setSelectedItem] = useState(data?.product?.variants[0]?.id)
+
+
+  const [checkoutCreate, {loading: checkoutLoading}] = useMutation(CHECKOUT_CREATE, {
+    onCompleted: data => {
+      console.log(data)
+    },
+    onError: error => {
+      console.log(error)
+    }
+  })
+
+
 
   let defaultImage = ''
 
@@ -122,7 +134,10 @@ const ProductComponent = () => {
                     <a href="#" className="text-muted">SIZE GUIDE</a>
                   </div>
                   <div className="d-flex-start mt-3">
-                    <button className="btn btn-dark min-width-350 fw-600">
+                    <button onClick={() => {
+                      console.log('...selected item...', selectedItem)
+                      addItem(selectedItem, 1)
+                    }} className="btn btn-dark min-width-350 fw-600">
                       ADD TO CART
                     </button>
                     <img

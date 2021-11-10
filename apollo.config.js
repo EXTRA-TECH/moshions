@@ -3,7 +3,7 @@ module.exports = {
     excludes: ["**/__tests__/**/*", "**/@sdk/**/*"],
     service: {
       name: "saleor",
-      url: "https://moshions-api.herokuapp.com/graphql/",
+      url: "https://moshions-stagging-api.herokuapp.com/graphql/",
     },
   },
 };

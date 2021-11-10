@@ -65,7 +65,7 @@ const DynamicCollection = ({dataSource, row, categorySource, loading}:any) => {
                 )
               })
             }
-            {!loading && <li><Link href="/brand"><a href="#">THE BRAND</a></Link></li>}
+            {/* {!loading && <li><Link href="/brand"><a href="#">THE BRAND</a></Link></li>} */}
           </ul>
         </div>
       </section>

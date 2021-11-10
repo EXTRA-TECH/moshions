@@ -21,6 +21,7 @@ export const PRODUCT = gql`
       sortOrder
     }
     variants {
+      id
       media {
         url
         alt
@@ -56,4 +57,52 @@ export const PRODUCT = gql`
     }
   }
 }
+`
+
+export const CHECKOUT_CREATE = gql`
+  mutation(
+    $variantId: ID!,
+    $quantity: Int!
+  ) {
+    checkoutCreate(
+      input: {
+        channel: "default-channel",
+        email: "customer@example.com"
+        lines: [{quantity: $quantity, variantId: $variantId}]
+      }
+    ) {
+      checkout {
+        id
+        token
+        totalPrice {
+          gross {
+            amount
+            currency
+          }
+        }
+        isShippingRequired
+        availableShippingMethods {
+          id
+          name
+        }
+        availableCollectionPoints {
+          id
+          name
+          clickAndCollectOption
+        }
+        availablePaymentGateways {
+          id
+          name
+          config {
+            field
+            value
+          }
+        }
+      }
+      checkoutErrors {
+        field
+        code
+      }
+    }
+  }
 `

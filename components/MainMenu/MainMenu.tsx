@@ -2,7 +2,7 @@ import Navbar from '../Navbar'
 import Link from 'next/link'
 import Bag from '../Bag';
 import { useAuth, useCart } from "@saleor/sdk";
-import {CATEGORIES} from './queries'
+import {CATEGORIES, PRODUCT_VARIANT} from './queries'
 import {useQuery} from '@apollo/react-hooks'
 
 
@@ -13,8 +13,7 @@ const MainMenu = () => {
 
   const cartItemsQuantity =
     (items &&
-      items.reduce((prevVal, currVal) => prevVal + currVal.quantity, 0)) ||
-    0;
+      items.reduce((prevVal, currVal) => prevVal + currVal.quantity, 0));
 
   return (
     <header className="header bg-black">
