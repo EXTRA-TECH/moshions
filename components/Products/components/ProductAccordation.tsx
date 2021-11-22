@@ -1,8 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
 const ProductAccord = () => {
   return (
-    <div className="accordion py-5" id="accordionExample">
-      <div className="accordion-item">
+    <div className="accordion py-5" id="accordionExample" style={{zIndex: 1}}>
+      <div className="accordion-item" style={{zIndex: 1}}>
         <h2 className="accordion-header" id="headingOne">
           <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
             Details & Care Tips
@@ -14,7 +14,7 @@ const ProductAccord = () => {
           </div>
         </div>
       </div>
-      <div className="accordion-item">
+      <div className="accordion-item" style={{zIndex: 1}}>
         <h2 className="accordion-header" id="headingTwo">
           <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
             Shipping, Delivery & Return

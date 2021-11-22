@@ -8,32 +8,32 @@ import {PRODUCT, CHECKOUT_CREATE} from './queries'
 import { useEffect } from 'react'
 import Link from 'next/link'
 import {priceToString} from '../../lib/helpers'
-import {useCart} from '@saleor/sdk'
+import {useCart, useProductList, useProductDetails} from '@saleor/sdk'
+import Loader from '../../components/Loader'
+import ReactImageMagnify from 'react-image-magnify';
+
 
 const ProductComponent = () => {
   const router = useRouter()
   const {id} = router.query
   const {addItem} = useCart()
 
+
   const {data, loading, error} = useQuery(PRODUCT, {
     variables: {
       id
     }
   })
+  const [selectedItem, setSelectedItem] = useState(null)
+  const [image, setImage] = useState(data?.product?.images[0]?.url)
 
-  const [selectedItem, setSelectedItem] = useState(data?.product?.variants[0]?.id)
+  if (loading) {
+    return <Loader />
+  }
 
-
-  const [checkoutCreate, {loading: checkoutLoading}] = useMutation(CHECKOUT_CREATE, {
-    onCompleted: data => {
-      console.log(data)
-    },
-    onError: error => {
-      console.log(error)
-    }
-  })
-
-
+  if (data) {
+    console.log('product>>>', data?.product?.variants)
+  }
 
   let defaultImage = ''
 
@@ -41,18 +41,34 @@ const ProductComponent = () => {
     defaultImage = data?.product?.images[0]?.url
   }
 
-  const [image, setImage] = useState("")
-
   const handleChangeImage = (imgUrl: string) => {
     setImage(imgUrl)
   }
+
+  const onChangeVariant = (variantId:any) => {
+    setSelectedItem(variantId)
+  }
+
+  const imageProps = {
+    smallImage: {
+      alt: 'Phasellus laoreet',
+      isFluidWidth: true,
+      src: image || defaultImage
+    },
+    largeImage: {
+      src: image || defaultImage,
+      width: 1200,
+      height: 1800
+    },
+    enlargedImageContainerStyle: { background: '#fff', zIndex: 9 }
+  };
 
   return (
     <>
       <MainContainer>
         <div className="product-section py-5">
           <div className="container">
-            <nav aria-label="breadcrumb">
+            <nav id="breadcrumb-arrow" aria-label="breadcrumb">
               <ol className="breadcrumb">
                 <li className="breadcrumb-item"><Link href="/"><a href="#">Home</a></Link></li>
                 <li className="breadcrumb-item"><Link href={`/products?category=${data?.product?.category?.slug}`}><a href="#">{data?.product?.category?.name}</a></Link></li>
@@ -60,9 +76,9 @@ const ProductComponent = () => {
               </ol>
             </nav>
             <div className="row">
-              <div className="col-lg-6 col-md-6 col-ms-12 col-xs-12 pr--40">
+              <div className="col-lg-7 col-md-7 col-ms-12 col-xs-12 pr--40">
                 <div className="row">
-                  <div className="col-md-2">
+                  <div className="col-md-3">
                     {
                       data?.product?.images?.map((el:any, i:any) => (
                         <img 
@@ -75,12 +91,20 @@ const ProductComponent = () => {
                       ))
                     }
                   </div>
-                  <div className="col-md-10 img-hover-zoom">
-                    <img src={image || defaultImage} className="w-100 img-zoom" alt="" />
+                  <div className="col-md-9" id="document" style={{zIndex: 99999}}>
+                    {/* <img 
+                      src={image || defaultImage} 
+                      onMouseMove={onMouseMoveImage} 
+                      onMouseDown={onMouseDownImage} 
+                      onMouseUp={onMouseUpImage}
+                      onWheel={onWheelImage}
+                      className="w-100 img-zoom" 
+                      alt="" /> */}
+                      <ReactImageMagnify {...imageProps} />
                   </div>
                 </div>
               </div>
-              <div className="col-lg-6 col-md-6 col-ms-12 col-xs-12 py-2">
+              <div className="col-lg-5 col-md-5 col-ms-12 col-xs-12 py-2">
                 <h3 className="product-name">{data?.product?.name}</h3>
                 <h4 className="product-price">{data && priceToString({amount: data?.product?.pricing?.priceRange?.start?.net?.amount || 0, currency: 'RWF'}, 'RWF')} </h4>
                 {data && data?.product?.metadata.filter((el:any) => el.key === 'color').length > 0 && <div className="w-100p">
@@ -107,37 +131,44 @@ const ProductComponent = () => {
                     }
                   </div>
                 </div>}
-
                 <div className="w-100p">
+                  {console.log('design size....', data?.product?.variants)}
                   <p className="option-title">SIZE</p>
                   <div className="d-flex-separetes min-width-350">
                     <div className="product-sizes">
-                      <span className="">
-                        <input
-                          type="radio"
-                          name="size"
-                          id="M"
-                          className="d-none show-bg"
-                        />
-                        <label htmlFor="M" className="size">M</label>
-                      </span>
-                      <span className="">
-                        <input
-                          type="radio"
-                          name="size"
-                          id="L"
-                          className="d-none show-bg"
-                        />
-                        <label htmlFor="L" className="size">L</label>
-                      </span>
+                      {
+                        data?.product?.variants?.map((el:any, i:any) => {
+                          return (
+                            <>
+                              {
+                                el?.attributes?.map((element:any, i:any) => {
+                                  return (
+                                    <span className="">
+                                      <input
+                                        type="radio"
+                                        name="size"
+                                        id="M"
+                                        onClick={() => onChangeVariant(el?.id)}
+                                        className="d-none show-bg"
+                                      />
+                                      <label htmlFor="M" className="size">{element?.values[0]?.name}</label>
+                                    </span>
+                                  )
+                                })
+                              }
+                            </>
+                          )
+                        })
+                      }
                     </div>
                     <a href="#" className="text-muted">SIZE GUIDE</a>
                   </div>
                   <div className="d-flex-start mt-3">
                     <button onClick={() => {
-                      console.log('...selected item...', selectedItem)
-                      addItem(selectedItem, 1)
-                    }} className="btn btn-dark min-width-350 fw-600">
+                      if (selectedItem) {
+                        addItem(selectedItem, 1)
+                      }
+                    }} disabled={selectedItem === null} className={`btn min-width-350 fw-600 ${selectedItem === null ? 'btn-default' : ''}`} id={`${selectedItem === null ? 'cart-disabled' : ''}`}>
                       ADD TO CART
                     </button>
                     <img

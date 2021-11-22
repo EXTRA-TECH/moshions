@@ -15,6 +15,10 @@ export const PRODUCT_VARIANTS = gql`
               url
               alt
             }
+            thumbnail {
+              url
+              alt
+            }
           }
         }
       }

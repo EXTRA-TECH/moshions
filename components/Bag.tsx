@@ -1,14 +1,57 @@
 import Router from "next/router"
-import { useCart, useProductList, useVariantsProducts } from "@saleor/sdk"
-import { useEffect, useState } from "react"
+import { useCart, useProductList, useVariantsProducts, useCheckout } from "@saleor/sdk"
+import { useEffect, useState, useContext } from "react"
 import {useQuery} from "@apollo/react-hooks"
-import {PRODUCT_VARIANTS} from '../gql/product/variants'
+import { IItems } from "@saleor/sdk/lib/api/Cart/types";
+// import {PRODUCT_VARIANTS} from '../gql/product/variants'
+import {CHECKOUT_LINES} from './queries'
+import { PRODUCT_VARIANTS } from "../gql/product/variants";
+import { CountryCode, useSaleorClient } from "@saleor/sdk";
+
+const generateCart = (
+  items: any,
+  removeItem: (variantId: string) => any,
+  updateItem: (variantId: string, quantity: number) => any,
+) => {
+  console.log('items', items)
+  return items?.map(({id, image, quantity, totalPrice}, i:number) => {
+
+    return (
+      <div key={id ? `id-${id}` : `idx-${i}`} className="side-cart-item">
+        <div className="product-details">
+          <div className="side-product-details-image p-2">
+            <img
+              src={image || ""}
+              alt={""}
+              className="w-100p"
+              srcSet=""
+            />
+          </div>
+          <div className="p-2">
+            <p className="cart-item-title text-light">Akijoro Top</p>
+            <p className="color-cold text-light">S / Orange</p>
+            <p className="color-cold text-light">{quantity}</p>
+            <div className="">
+              <a href="#" className="text-light">Remove</a>
+            </div>
+          </div>
+        </div><hr />
+      </div>
+    )
+  })
+}
 
 
 const Bag = ({cartItemsQuantity}: any) => {
-  const {items} = useCart()
-  const [, ] = useState([])
-  
+  const {
+    loaded, 
+    items, 
+    removeItem,
+    updateItem,
+    totalPrice
+  } = useCart()
+  const {checkout} = useCheckout()
+
   const handleContinueShopping = () => {
     Router.push('/cart')
   }
@@ -19,11 +62,36 @@ const Bag = ({cartItemsQuantity}: any) => {
     ids = items.map(el => el.variant.id)
   }
 
-  const {data: cartListData} = useQuery(PRODUCT_VARIANTS, {
+  const [detailLines, setDetailLines] = useState([]);
+  const {products} = useSaleorClient()
+  const {data: productVariants} = useQuery(PRODUCT_VARIANTS, {
     variables: {
       ids
     }
   })
+
+
+  if (productVariants) {
+    for (let product in productVariants?.productVariants?.edges) {
+      console.log(productVariants?.productVariants?.edges)
+    }
+  }
+
+  useEffect(() => {
+    const getDetails = () => {
+      if (items) {
+        setDetailLines(productVariants?.productVariants?.edges?.map((productLine:any, index:number) => {
+          console.log('edge', productLine)
+          return {
+            ...items[index],
+            image: productLine?.node?.product?.thumbnail?.url,
+            alt: productLine?.node?.product?.thumbnail?.alt
+          }
+        }))
+      }
+    }
+    getDetails()
+  }, [items, productVariants?.productVariants?.edges])
 
 
   return (
@@ -54,36 +122,9 @@ const Bag = ({cartItemsQuantity}: any) => {
           <button type="button" className="btn-close text-reset cart-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div className="offcanvas-body text-light py-3 px-3">
-          {
-            items?.length 
-              && 
-              <div className="side-cart-products">
-
-                {
-                  cartListData && cartListData?.productVariants?.edges?.map((el:any, i:number) => (
-                    <div key={i} className="side-cart-item">
-                      <div className="product-details">
-                        <div className="side-product-details-image p-2">
-                          <img
-                            src="/assets/akijoro.png"
-                            alt=""
-                            className="w-100p"
-                            srcSet=""
-                          />
-                        </div>
-                        <div className="p-2">
-                          <p className="cart-item-title text-light">Akijoro Top</p>
-                          <p className="color-cold text-light">S / Orange</p>
-                          <div className="">
-                            <a href="#" className="text-light">Remove</a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  )) 
-                }
-              </div>
-          }
+          <div className="side-cart-products">
+            {detailLines && generateCart(detailLines, removeItem, updateItem)}
+          </div>
           {
             items?.length === 0 
             && 
@@ -98,7 +139,7 @@ const Bag = ({cartItemsQuantity}: any) => {
           {
             items?.length &&
             <>
-              <div className="continue-shopping py-3">
+              <div className="continue-shopping py-3 display-block">
                 <button type="button" onClick={handleContinueShopping} className="btn text-reset cart-continue-shopping" data-bs-dismiss="offcanvas" aria-label="Close">GO TO MY BAG</button>
               </div>
               <div className="continue-shopping py-3">

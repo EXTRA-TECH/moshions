@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Header from "./components/header";
 import SingleImage from "./components/singleImage";
+import Loader from '../Loader';
 import SingleImageTextLeft from "./components/singleImageTextLeft";
 import SingleImageTextRight from "./components/singleImageTextRight";
 import DynamicCollection from './components/DynamicCollection'
@@ -13,6 +14,10 @@ const Home = () => {
   const {data, error, loading} = useQuery(COLLECTIONS)
 
   const {data: categoryData, loading: categoryLoading} = useQuery(CATEGORIES)
+
+  if (categoryLoading) {
+    return <Loader />
+  }
 
 
   return (

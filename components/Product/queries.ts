@@ -1,4 +1,4 @@
-import gql from "graphql-tag";
+import gql from "graphql-tag-ts";
 
 export const PRODUCT = gql`
   query(
@@ -20,11 +20,30 @@ export const PRODUCT = gql`
       alt
       sortOrder
     }
+    attributes {
+      attribute {
+        id
+        name
+      }
+      values {
+        name
+      }
+    }
     variants {
       id
+      name
       media {
         url
         alt
+      }
+      attributes {
+        attribute {
+          id
+          name
+        }
+        values {
+          name
+        }
       }
       metadata {
         key
