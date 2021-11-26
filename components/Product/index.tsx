@@ -113,7 +113,6 @@ const ProductComponent = () => {
                     {
                       data && data?.product?.metadata?.map((el:any, i:any) => {
                         if (el.key === "color") {
-                          console.log(el.value)
                           return (
                             <span key={i} className="">
                               <input
@@ -132,8 +131,7 @@ const ProductComponent = () => {
                   </div>
                 </div>}
                 <div className="w-100p">
-                  {console.log('design size....', data?.product?.variants)}
-                  <p className="option-title">SIZE</p>
+                  <p className="option-title">Size</p>
                   <div className="d-flex-separetes min-width-350">
                     <div className="product-sizes">
                       {
@@ -142,18 +140,37 @@ const ProductComponent = () => {
                             <>
                               {
                                 el?.attributes?.map((element:any, i:any) => {
-                                  return (
-                                    <span className="">
-                                      <input
-                                        type="radio"
-                                        name="size"
-                                        id="M"
-                                        onClick={() => onChangeVariant(el?.id)}
-                                        className="d-none show-bg"
-                                      />
-                                      <label htmlFor="M" className="size">{element?.values[0]?.name}</label>
-                                    </span>
-                                  )
+                                  if (el?.id === selectedItem) {
+                                    return (
+                                      <span className="size" onClick={() => onChangeVariant(el?.id)} style={el?.id === selectedItem ? {backgroundColor: 'black', color: 'white'} : {}}>
+                                        {/* <input
+                                          type="radio"
+                                          name="size"
+                                          id="M"
+                                          onClick={() => onChangeVariant(el?.id)}
+                                          className={`d-none`}
+                                          
+                                        />
+                                        <label htmlFor="M" className="size" style={el?.id === selectedItem ? {backgroundColor: 'black', color: 'white'} : {}}>{element?.values[0]?.name}</label> */}
+                                        {element?.values[0]?.name}
+                                      </span>
+                                    )
+                                  } else {
+                                    return (
+                                      <span className="size" onClick={() => onChangeVariant(el?.id)}>
+                                        {/* <input
+                                          type="radio"
+                                          name="size"
+                                          id="M"
+                                          onClick={() => onChangeVariant(el?.id)}
+                                          className={`d-none`}
+                                          
+                                        />
+                                        <label htmlFor="M" className="size" style={el?.id === selectedItem ? {backgroundColor: 'black', color: 'white'} : {}}>{element?.values[0]?.name}</label> */}
+                                        {element?.values[0]?.name}
+                                      </span>
+                                    )
+                                  }
                                 })
                               }
                             </>
@@ -163,23 +180,31 @@ const ProductComponent = () => {
                     </div>
                     <a href="#" className="text-muted">SIZE GUIDE</a>
                   </div>
+                  <div className="py-3">
+                    {
+                      JSON.parse(data?.product?.description).blocks?.map((el:any, i:number) => (
+                        <p key={i}>{el?.data.text}</p>
+                      ))
+                    }
+                    {/* {console.log(JSON.parse(data?.product?.description).blocks[0].data.text)} */}
+                  </div>
                   <div className="d-flex-start mt-3">
                     <button onClick={() => {
                       if (selectedItem) {
                         addItem(selectedItem, 1)
                       }
-                    }} disabled={selectedItem === null} className={`btn min-width-350 fw-600 ${selectedItem === null ? 'btn-default' : ''}`} id={`${selectedItem === null ? 'cart-disabled' : ''}`}>
+                    }} disabled={selectedItem === null} className={`btn min-width-350 fw-600 ${selectedItem === null ? 'btn-default' : 'btn-dark'}`} id={`${selectedItem === null ? 'cart-disabled' : ''}`}>
                       ADD TO CART
                     </button>
-                    <img
+                    {/* <img
                       src="/assets/Icon feather-heart@2x.svg"
                       className="header-icon"
                       alt=""
                       srcSet=""
-                    />
+                    /> */}
                   </div>
                 </div>
-                <ProductAccord />
+                <ProductAccord description={JSON.parse(data?.product?.description).blocks} />
               </div>
             </div>
           </div>

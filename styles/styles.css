@@ -677,6 +677,14 @@ input[type='radio'].show-check:checked + label::after {
   align-items: center;
   margin-right: 10px;
   transition: all 0.3s;
+  /* padding: 3px 8px; */
+  width: 50px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.size-black {
+  background-color: #000;
 }
 
 input[type='radio'].show-bg:checked + label {
@@ -685,6 +693,8 @@ input[type='radio'].show-bg:checked + label {
   display: flex;
   justify-content: center;
   align-items: center;
+  /* padding: 3px 8px; */
+  /* width: 40px; */
 }
 
 .fw-600 {

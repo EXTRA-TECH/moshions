@@ -11,13 +11,11 @@ import { CountryCode, useSaleorClient } from "@saleor/sdk";
 const generateCart = (
   items: any,
   removeItem: (variantId: string) => any,
-  updateItem: (variantId: string, quantity: number) => any,
+  updateItem: (variantId: string, quantity: number) => any
 ) => {
-  console.log('items', items)
-  return items?.map(({id, image, quantity, totalPrice}, i:number) => {
-
+  return items?.map(({id, image, quantity, variant, totalPrice, name}, i:number) => {
     return (
-      <div key={id ? `id-${id}` : `idx-${i}`} className="side-cart-item">
+      <div key={variant?.id ? `id-${variant?.id}` : `idx-${i}`} className="side-cart-item">
         <div className="product-details">
           <div className="side-product-details-image p-2">
             <img
@@ -28,11 +26,14 @@ const generateCart = (
             />
           </div>
           <div className="p-2">
-            <p className="cart-item-title text-light">Akijoro Top</p>
+            <p className="cart-item-title text-light">{name || '-'}</p>
             <p className="color-cold text-light">S / Orange</p>
             <p className="color-cold text-light">{quantity}</p>
             <div className="">
-              <a href="#" className="text-light">Remove</a>
+              <a href="#" onClick={(e) => {
+                e.preventDefault()
+                removeItem(variant?.id)
+              }} className="text-light">Remove</a>
             </div>
           </div>
         </div><hr />
@@ -48,12 +49,21 @@ const Bag = ({cartItemsQuantity}: any) => {
     items, 
     removeItem,
     updateItem,
+    subtotalPrice,
     totalPrice
   } = useCart()
   const {checkout} = useCheckout()
 
-  const handleContinueShopping = () => {
+  const handleToCart = () => {
     Router.push('/cart')
+  }
+
+  const handleContinueShopping = () => {
+    Router.push('/')
+  }
+
+  const handleLink = (link:string) => {
+    Router.push(`/${link}`)
   }
 
   let ids:any[] = []
@@ -70,27 +80,20 @@ const Bag = ({cartItemsQuantity}: any) => {
     }
   })
 
-
-  if (productVariants) {
-    for (let product in productVariants?.productVariants?.edges) {
-      console.log(productVariants?.productVariants?.edges)
-    }
-  }
-
   useEffect(() => {
-    const getDetails = () => {
-      if (items) {
-        setDetailLines(productVariants?.productVariants?.edges?.map((productLine:any, index:number) => {
-          console.log('edge', productLine)
-          return {
-            ...items[index],
-            image: productLine?.node?.product?.thumbnail?.url,
-            alt: productLine?.node?.product?.thumbnail?.alt
+    if (items?.length) {
+      items?.map((item, i) => {      
+        for (let productLine in productVariants?.productVariants?.edges) {
+          if (item?.variant?.id === productVariants?.productVariants?.edges[productLine]?.node?.id) {
+            item['name'] = productVariants?.productVariants?.edges[productLine]?.node?.product?.name
+            item['image'] = productVariants?.productVariants?.edges[productLine]?.node?.product?.thumbnail?.url
+            item['alt'] = productVariants?.productVariants?.edges[productLine]?.node?.product?.thumbnail?.alt
+            break
           }
-        }))
-      }
+        } 
+        return item
+      })
     }
-    getDetails()
   }, [items, productVariants?.productVariants?.edges])
 
 
@@ -123,29 +126,28 @@ const Bag = ({cartItemsQuantity}: any) => {
         </div>
         <div className="offcanvas-body text-light py-3 px-3">
           <div className="side-cart-products">
-            {detailLines && generateCart(detailLines, removeItem, updateItem)}
+            {loaded && items?.length !== 0 && generateCart(items, removeItem, updateItem)}
           </div>
           {
-            items?.length === 0 
+            items?.length === 0
             && 
             <div className="cart-empty">
-              <h4 className="py-2">Your cart is empty</h4>
+              <h4 className="py-2">Your bag is empty</h4>
               <p>
                 You haven’t added anything to your bag. 
                 We’re sure you’ll find something in our store
               </p>
+              <button type="button" onClick={handleContinueShopping} className="btn text-reset cart-continue-shopping" data-bs-dismiss="offcanvas" aria-label="Close">CONTINUE SHOPPING</button>
             </div>
           }
           {
-            items?.length &&
+            items?.length !== 0 &&
             <>
               <div className="continue-shopping py-3 display-block">
-                <button type="button" onClick={handleContinueShopping} className="btn text-reset cart-continue-shopping" data-bs-dismiss="offcanvas" aria-label="Close">GO TO MY BAG</button>
+                <button type="button" onClick={handleToCart} className="btn text-reset cart-continue-shopping" data-bs-dismiss="offcanvas" aria-label="Close">GO TO MY BAG</button>
               </div>
               <div className="continue-shopping py-3">
-                <button type="button" onClick={() => {
-                  Router.push('/checkout')
-                }} className="btn btn-light text-dark cart-continue-shopping" data-bs-dismiss="offcanvas" aria-label="Close">PROCEED TO CHECKOUT</button>
+                <button type="button" onClick={() => handleLink('checkout')} className="btn btn-light text-dark cart-continue-shopping" data-bs-dismiss="offcanvas" aria-label="Close">PROCEED TO CHECKOUT</button>
               </div>
             </>
           }

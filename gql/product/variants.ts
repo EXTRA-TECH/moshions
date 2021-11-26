@@ -11,6 +11,8 @@ export const PRODUCT_VARIANTS = gql`
           name
           product {
             id
+            name
+            description
             images {
               url
               alt

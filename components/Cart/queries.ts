@@ -10,6 +10,7 @@ export const LINESADD = gql`
         lines{
           id
           variant{
+            id
             name
           }
           quantity
