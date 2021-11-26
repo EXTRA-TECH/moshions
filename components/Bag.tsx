@@ -13,7 +13,7 @@ const generateCart = (
   removeItem: (variantId: string) => any,
   updateItem: (variantId: string, quantity: number) => any
 ) => {
-  return items?.map(({image, quantity, variant, totalPrice, name}:any, i:number) => {
+  return items?.map(({image, quantity, variant, totalPrice, name, size}:any, i:number) => {
     return (
       <div key={variant?.id ? `id-${variant?.id}` : `idx-${i}`} className="side-cart-item">
         <div className="product-details">
@@ -27,7 +27,7 @@ const generateCart = (
           </div>
           <div className="p-2">
             <p className="cart-item-title text-light">{name || '-'}</p>
-            <p className="color-cold text-light">S / Orange</p>
+            <p className="color-cold text-light">Attr: {size || '-'} / </p>
             <p className="color-cold text-light">{quantity}</p>
             <div className="">
               <a href="#" onClick={(e) => {
@@ -88,6 +88,7 @@ const Bag = ({cartItemsQuantity}: any) => {
             item['name'] = productVariants?.productVariants?.edges[productLine]?.node?.product?.name
             item['image'] = productVariants?.productVariants?.edges[productLine]?.node?.product?.thumbnail?.url
             item['alt'] = productVariants?.productVariants?.edges[productLine]?.node?.product?.thumbnail?.alt
+            item['size'] = productVariants?.productVariants?.edges[productLine]?.node?.product?.thumbnail?.alt
             break
           }
         } 
