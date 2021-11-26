@@ -85,6 +85,7 @@ const Bag = ({cartItemsQuantity}: any) => {
       items?.map((item:any) => {      
         for (let productLine in productVariants?.productVariants?.edges) {
           if (item?.variant?.id === productVariants?.productVariants?.edges[productLine]?.node?.id) {
+            console.log('>>..node', productVariants?.productVariants?.edges[productLine]?.node)
             item['name'] = productVariants?.productVariants?.edges[productLine]?.node?.product?.name
             item['image'] = productVariants?.productVariants?.edges[productLine]?.node?.product?.thumbnail?.url
             item['alt'] = productVariants?.productVariants?.edges[productLine]?.node?.product?.thumbnail?.alt

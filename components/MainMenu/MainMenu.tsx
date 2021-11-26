@@ -50,7 +50,7 @@ const MainMenu = () => {
                   )
                 })
               }
-              {/* {!loading && <li><Link href="/founder"><a href="#">THE BRAND</a></Link></li>} */}
+              {!loading && <li><Link href="/founder"><a href="#">THE BRAND</a></Link></li>}
             </ul>
             <a href="#" className="close-menu show-mobile">x</a>
           </div>
