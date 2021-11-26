@@ -13,7 +13,7 @@ const generateCart = (
   removeItem: (variantId: string) => any,
   updateItem: (variantId: string, quantity: number) => any
 ) => {
-  return items?.map(({id, image, quantity, variant, totalPrice, name}, i:number) => {
+  return items?.map(({image, quantity, variant, totalPrice, name}:any, i:number) => {
     return (
       <div key={variant?.id ? `id-${variant?.id}` : `idx-${i}`} className="side-cart-item">
         <div className="product-details">
@@ -82,7 +82,7 @@ const Bag = ({cartItemsQuantity}: any) => {
 
   useEffect(() => {
     if (items?.length) {
-      items?.map((item, i) => {      
+      items?.map((item:any) => {      
         for (let productLine in productVariants?.productVariants?.edges) {
           if (item?.variant?.id === productVariants?.productVariants?.edges[productLine]?.node?.id) {
             item['name'] = productVariants?.productVariants?.edges[productLine]?.node?.product?.name
