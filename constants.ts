@@ -1,4 +1,4 @@
-export const apiUrl = 'https://moshions-api.herokuapp.com/graphql/';
+export const apiUrl = 'https://moshions-stagging-api.herokuapp.com/graphql/';
 export const sentryDsn = process.env.SENTRY_DSN;
 // const sampleRate = parseFloat(process.env.SENTRY_APM);
 // export const sentrySampleRate = isNaN(sampleRate) ? 0 : sampleRate;

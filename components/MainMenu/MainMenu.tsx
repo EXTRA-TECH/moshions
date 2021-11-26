@@ -2,7 +2,7 @@ import Navbar from '../Navbar'
 import Link from 'next/link'
 import Bag from '../Bag';
 import { useAuth, useCart } from "@saleor/sdk";
-import {CATEGORIES} from './queries'
+import {CATEGORIES, PRODUCT_VARIANT} from './queries'
 import {useQuery} from '@apollo/react-hooks'
 
 
@@ -13,8 +13,7 @@ const MainMenu = () => {
 
   const cartItemsQuantity =
     (items &&
-      items.reduce((prevVal, currVal) => prevVal + currVal.quantity, 0)) ||
-    0;
+      items.reduce((prevVal, currVal) => prevVal + currVal.quantity, 0));
 
   return (
     <header className="header bg-black">
@@ -35,31 +34,33 @@ const MainMenu = () => {
           </a>
           <div id="menu" className="header-menu menu-global">
             <ul className="header-menu-list">
-              {/* {loading && <div className="spinner-border text-light" role="status">
-                <span className="sr-only"></span>
-              </div>} */}
+              {loading && <button className="btn btn-light" type="button" disabled>
+                <span className="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                <span className="visually-hidden">Loading...</span>
+              </button>
+              }
               {
                 data?.categories?.edges?.map((el:any, i:any) => {
                   return (
                     <li key={i}>
-                      <Link href={`/products?category=${el.node.name.toLowerCase().trim()}`}>
+                      <Link href={`/category/${el.node.name.toLowerCase().trim()}`}>
                         <a href="#" className="text-uppercase">{el.node.name}</a>
                       </Link>
                     </li>
                   )
                 })
               }
-              {/* <li><Link href="/brand"><a href="#">THE BRAND</a></Link></li> */}
+              {/* {!loading && <li><Link href="/founder"><a href="#">THE BRAND</a></Link></li>} */}
             </ul>
             <a href="#" className="close-menu show-mobile">x</a>
           </div>
           <div className="header-shop-actions">
-            <img
+            {/* <img
               src="/assets/Icon feather-heart.svg"
               className="header-icon"
               alt=""
               srcSet=""
-            />
+            /> */}
             <Bag cartItemsQuantity={cartItemsQuantity} />
           </div>
         </div>

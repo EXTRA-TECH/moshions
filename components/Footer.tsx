@@ -32,7 +32,7 @@ const Footer = () => {
           <div className="col-md-10">
             <ul className='nav navbar-nav'>
               <li><a href="#" className="text-light text-decoration-none">THE BRAND :</a></li>
-              <li><Link href="/services"><a href="#" className="text-light text-decoration-none">PROFILE |</a></Link></li>
+              <li><Link href="/founder"><a href="#" className="text-light text-decoration-none">PROFILE |</a></Link></li>
               <li><Link href="/services"><a href="#" className="text-light text-decoration-none">PRESS |</a></Link></li>
               <li><Link href="/services"><a href="#" className="text-light text-decoration-none">{`LEGAL NOTICE |`}</a></Link></li>
               <li><Link href="/services"><a href="#" className="text-light text-decoration-none">{`SUSTAINABILITY & CRS |`}</a></Link></li>

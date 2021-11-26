@@ -1,4 +1,4 @@
-import gql from "graphql-tag";
+import gql from "graphql-tag-ts";
 // import { TypedQuery } from "../../core/queries";
 // import { MainMenu } from "./gqlTypes/MainMenu";
 
@@ -51,6 +51,23 @@ export const CATEGORIES = gql`
           id
           name
           slug
+        }
+      }
+    }
+  }
+`
+
+export const PRODUCT_VARIANT = gql`
+  query(
+    $id: ID!
+  ) {
+    productVariant(id: $id, channel: "channel-rwf") {
+      id
+      product {
+        id
+        images {
+          url
+          alt
         }
       }
     }

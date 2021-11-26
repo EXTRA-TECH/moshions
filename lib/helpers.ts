@@ -14,3 +14,17 @@ export function formatPrice(value: any) {
     currency: 'USD'
   }).format(amount);
 }
+
+export const priceToString = (
+  price: { amount: number; currency: string },
+  locale?: string
+): string => {
+  const { amount } = price;
+  if (locale) {
+    return amount.toLocaleString(locale, {
+      currency: price.currency,
+      style: "currency",
+    });
+  }
+  return `${price.currency} ${amount.toFixed(2)}`;
+};
