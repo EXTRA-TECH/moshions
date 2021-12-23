@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-sync-scripts */
-import Head from 'next/Head'
+import Head from 'next/head'
 import Home from '../components/Home'
 import Carousel from '../components/Carousel'
 import Footer from '../components/Footer'
