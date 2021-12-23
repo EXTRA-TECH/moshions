@@ -86,7 +86,7 @@ const Products = () => {
       />
 
       <section className="middle-section">
-        <div className="container">
+        <div className="container-fluid">
           <div className="collections">
             <CollectionFilter />
             <CollectionProduct dataSource={data?.category?.products?.edges} />

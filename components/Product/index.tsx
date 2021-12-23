@@ -11,6 +11,7 @@ import {priceToString} from '../../lib/helpers'
 import {useCart, useProductList, useProductDetails} from '@saleor/sdk'
 import Loader from '../../components/Loader'
 import ReactImageMagnify from 'react-image-magnify';
+import InnerImageZoom from 'react-inner-image-zoom';
 
 
 const ProductComponent = () => {
@@ -19,7 +20,7 @@ const ProductComponent = () => {
   const {addItem} = useCart()
 
 
-  const {data, loading, error} = useQuery(PRODUCT, {
+  const {data, loading, refetch: refetchProduct} = useQuery(PRODUCT, {
     variables: {
       id
     }
@@ -91,7 +92,7 @@ const ProductComponent = () => {
                       ))
                     }
                   </div>
-                  <div className="col-md-9" id="document" style={{zIndex: 99999}}>
+                  <div className="col-md-9" id="document">
                     {/* <img 
                       src={image || defaultImage} 
                       onMouseMove={onMouseMoveImage} 
@@ -100,7 +101,8 @@ const ProductComponent = () => {
                       onWheel={onWheelImage}
                       className="w-100 img-zoom" 
                       alt="" /> */}
-                      <ReactImageMagnify {...imageProps} />
+                      {/* <ReactImageMagnify {...imageProps} /> */}
+                      <InnerImageZoom src={image || defaultImage} zoomSrc={image || defaultImage} />
                   </div>
                 </div>
               </div>
@@ -189,13 +191,16 @@ const ProductComponent = () => {
                     {/* {console.log(JSON.parse(data?.product?.description).blocks[0].data.text)} */}
                   </div>
                   <div className="d-flex-start mt-3">
-                    <button onClick={() => {
+                    <a data-bs-toggle="offcanvas" href="#offcanvasRight" role="button" aria-controls="offcanvasRight" onClick={() => {
                       if (selectedItem) {
                         addItem(selectedItem, 1)
+                        refetchProduct({variables: {
+                          id
+                        }})
                       }
-                    }} disabled={selectedItem === null} className={`btn min-width-350 fw-600 ${selectedItem === null ? 'btn-default' : 'btn-dark'}`} id={`${selectedItem === null ? 'cart-disabled' : ''}`}>
+                    }} className={`btn min-width-350 fw-600 ${selectedItem === null ? 'disabled' : 'btn-dark'}`} id={`${selectedItem === null ? 'cart-disabled' : ''}`}>
                       ADD TO CART
-                    </button>
+                    </a>
                     {/* <img
                       src="/assets/Icon feather-heart@2x.svg"
                       className="header-icon"

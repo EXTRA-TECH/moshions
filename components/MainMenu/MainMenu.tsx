@@ -16,9 +16,9 @@ const MainMenu = () => {
       items.reduce((prevVal, currVal) => prevVal + currVal.quantity, 0));
 
   return (
-    <header className="header bg-black">
-      <div className="container">
-        <div className="header-top">
+    <header className="header bg-black sticky-top">
+      <div className="middle-section ">
+        <div className="header-top ">
           <div className="header-logo-container">
             <Link href="/">
               <img

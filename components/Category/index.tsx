@@ -8,6 +8,7 @@ import React, { useState, useEffect } from 'react'
 import MainContainer from '../MainContainer'
 import {CATEGORY} from './queries'
 import Loader from './../Loader'
+import Filters from '../Filters'
 
 
 const Products = () => {
@@ -89,6 +90,7 @@ const Products = () => {
         <div className="container">
           <div className="collections">
             <CollectionFilter />
+            {/* <Filters /> */}
             <CollectionProduct dataSource={data?.category?.products?.edges} />
           </div>
         </div>

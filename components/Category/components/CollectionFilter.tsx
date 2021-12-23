@@ -3,28 +3,27 @@ const CollectionFilter = ({title, description}: any) => {
     <div className="collection-options">
       <div className="options-container">
         <div className="option">
-          <span>Category</span>
-          <img
-            src="/assets/Icon ionic-ios-arrow-down.svg"
-            alt=""
-            srcSet=""
-          />
+          <span className="font-weight-light">Category</span>
+          <i className="bi bi-chevron-down"></i>
         </div>
         <div className="option">
           <span>Color</span>
-          <img
-            src="/assets/Icon ionic-ios-arrow-down.svg"
-            alt=""
-            srcSet=""
-          />
+          <i className="bi bi-chevron-down"></i>
         </div>
-        <div className="option">
+        {/* <div className="option">
           <span>Size</span>
-          <img
-            src="/assets/Icon ionic-ios-arrow-down.svg"
-            alt=""
-            srcSet=""
-          />
+          <i className="bi bi-chevron-down"></i>
+        </div> */}
+        <div className="filter-dropdown dropdown show">
+          <button  className="btn btn-default dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span>Size</span>
+            <i className="bi bi-chevron-down"></i>
+          </button>
+          <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a className="dropdown-item" href="#">Action</a>
+            <a className="dropdown-item" href="#">Another action</a>
+            <a className="dropdown-item" href="#">Something else here</a>
+          </div>
         </div>
       </div>
       <div className="options-container">
@@ -40,13 +39,10 @@ const CollectionFilter = ({title, description}: any) => {
         </div>
         <div className="option">
           <span>Sort By</span>
-          <img
-            src="/assets/Icon ionic-ios-arrow-down.svg"
-            alt=""
-            srcSet=""
-          />
+          <i className="bi bi-chevron-down"></i>
         </div>
       </div>
+      
     </div>
   )
 }

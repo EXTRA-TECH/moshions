@@ -74,7 +74,7 @@ const Bag = ({cartItemsQuantity}: any) => {
 
   const [detailLines, setDetailLines] = useState([]);
   const {products} = useSaleorClient()
-  const {data: productVariants} = useQuery(PRODUCT_VARIANTS, {
+  const {data: productVariants, refetch: refetchVariants} = useQuery(PRODUCT_VARIANTS, {
     variables: {
       ids
     }
