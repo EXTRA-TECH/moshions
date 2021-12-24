@@ -6,8 +6,6 @@ import {useQuery} from '@apollo/react-hooks'
 const Home = () => {
   const { items } = useCart();
 
-  // const {data, loading, error} = useQuery(CATEGORIES)
-
   const cartItemsQuantity =
     (items &&
       items.reduce((prevVal, currVal) => prevVal + currVal.quantity, 0));

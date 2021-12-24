@@ -29,7 +29,7 @@ const Container = ({children}: any) => {
         <meta property="og:url" content="index.html" />
       </Head>
       <body data-home-page="index.html" data-home-page-title="MEN" className="u-body">
-        {/* <Header /> */}
+        <Header />
         <Home />
         <Carousel />
         <GridImages />
