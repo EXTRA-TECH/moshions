@@ -42,7 +42,7 @@ library.add(fab, faCoffee);
 
 export const AuthContext = React.createContext({});
 
-const MoshionsApp = ({ Component, pageProps }: AppProps) => {
+const App = ({ Component, pageProps }: AppProps) => {
   const [state, dispatch] = useReducer(reducer, {
     token: null,
   });
@@ -122,4 +122,4 @@ const MoshionsApp = ({ Component, pageProps }: AppProps) => {
     </>
   );
 };
-export default MoshionsApp;
+export default App;

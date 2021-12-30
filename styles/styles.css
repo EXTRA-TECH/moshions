@@ -7,7 +7,7 @@ body {
 }
 
 * {
-  font-family: 'Futura';
+  font-family: 'Futura' !important;
 }
 
 /* MAIN PAGE HEADER */

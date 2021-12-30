@@ -15,10 +15,9 @@ const Home = () => {
 
   const {data: categoryData, loading: categoryLoading} = useQuery(CATEGORIES)
 
-  if (categoryLoading) {
-    return <Loader />
-  }
-
+  // if (categoryLoading) {
+  //   return <Loader />
+  // }
 
   return (
     <>

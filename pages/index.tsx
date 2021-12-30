@@ -1,12 +1,7 @@
-import Container from "../components/Container";
-import Home from '../components/Container/views/Home'
+import Home from '../components/Home'
 
 const HomePage = () => {
-  return (
-    <>
-      <Container></Container>
-    </>
-  )
+  return <Home />
 }
 
-export default HomePage;
+export default HomePage
