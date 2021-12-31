@@ -4,6 +4,7 @@ import Bag from '../Bag';
 import { useAuth, useCart } from "@saleor/sdk";
 import {CATEGORIES, PRODUCT_VARIANT} from './queries'
 import {useQuery} from '@apollo/react-hooks'
+import DropDownMenu from '../Home/DropDownMenu';
 
 
 const MainMenu = () => {
@@ -42,15 +43,30 @@ const MainMenu = () => {
               {
                 data?.categories?.edges?.map((el:any, i:any) => {
                   return (
-                    <li key={i}>
-                      <Link href={`/category/${el.node.name.toLowerCase().trim()}`}>
-                        <a href="#" className="text-uppercase">{el.node.name}</a>
-                      </Link>
-                    </li>
+                    <>
+                      {/* <li key={i}>
+                        <Link href={`/category/${el.node.name.toLowerCase().trim()}`}>
+                          <a href="#" className="text-uppercase">{el.node.name}</a>
+                        </Link>
+                      </li> */}
+                      <li key={i} className='has-dropdown'>
+                        <Link href={`/category/${el.node.slug}`}>
+                          <>
+                            <a
+                              href='#'
+                              className='text-uppercase drop-nav-link'>
+                              {el.node.name}
+                            </a>
+                            <DropDownMenu link={`/category/${el.node.slug}`} />
+                          </>
+                        </Link>
+                      </li>
+                    </>
+                    
                   )
                 })
               }
-              {!loading && <li><Link href="/founder"><a href="#">THE BRAND</a></Link></li>}
+              {!loading && <li style={{marginBottom: '10px'}}><Link href="/founder"><a href="#">THE BRAND</a></Link></li>}
             </ul>
             <a href="#" className="close-menu show-mobile">x</a>
           </div>

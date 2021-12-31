@@ -1,17 +1,17 @@
 
 import React from 'react';
 
-function DropDownMenu() {
+const DropDownMenu = ({link}) => {
   return (
     <ul className='drop-down-menu'>
       <li>
-        <a href='3'> Ishuri Collection</a>
+        <a href={link}> Ishuri Collection</a>
       </li>
       <li>
-        <a href='3'> Inkingi collection </a>
+        <a href={link}> Inkingi collection </a>
       </li>
       <li>
-        <a href='3'> Menu 1</a>
+        <a href={link}> Menu 1</a>
       </li>
     </ul>
   );

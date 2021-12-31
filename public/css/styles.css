@@ -1378,6 +1378,7 @@ input[type='radio'].show-bg:checked + label {
   position: relative;
   /* border-bottom: 2px solid #fff; */
   margin-bottom: 10px;
+  
   height: auto;
 }
 

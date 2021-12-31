@@ -3,10 +3,15 @@ import Link from 'next/link';
 import { useAuth, useCart } from '@saleor/sdk';
 import Bag from '../../Bag';
 import DropDownMenu from '../DropDownMenu';
+import Router from 'next/router';
 
 const Header = ({ categorySource, loading }: any) => {
   const { user, signOut } = useAuth();
   const { items } = useCart();
+
+  const cartItemsQuantity =
+    (items &&
+      items.reduce((prevVal, currVal) => prevVal + currVal.quantity, 0));
 
   const handleSignOut = () => {
     signOut();
@@ -57,7 +62,7 @@ const Header = ({ categorySource, loading }: any) => {
                                   className='text-uppercase drop-nav-link'>
                                   {el.node.name} +
                                 </a>
-                                <DropDownMenu />
+                                <DropDownMenu link={`/category/${el.node.slug}`} />
                               </>
                             </Link>
                           </li>
@@ -76,7 +81,7 @@ const Header = ({ categorySource, loading }: any) => {
                     alt=""
                     srcSet=""
                   /> */}
-                  <Bag />
+                  <Bag cartItemsQuantity={cartItemsQuantity} />
                 </div>
               </div>
             </div>
@@ -91,7 +96,9 @@ const Header = ({ categorySource, loading }: any) => {
               adventures.
             </p>
 
-            <span className='outline'>Discover More</span>
+            <span onClick={() => {
+              Router.replace('/category/men')
+            }} className='outline'>Discover More</span>
           </div>
         </div>
         <div className='main-header-right'>

@@ -10,11 +10,11 @@ const CollectionFilter = ({title, description}: any) => {
           <span>Color</span>
           <i className="bi bi-chevron-down"></i>
         </div>
-        {/* <div className="option">
+        <div className="option">
           <span>Size</span>
           <i className="bi bi-chevron-down"></i>
-        </div> */}
-        <div className="filter-dropdown dropdown show">
+        </div>
+        {/* <div className="filter-dropdown dropdown show">
           <button  className="btn btn-default dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span>Size</span>
             <i className="bi bi-chevron-down"></i>
@@ -24,7 +24,7 @@ const CollectionFilter = ({title, description}: any) => {
             <a className="dropdown-item" href="#">Another action</a>
             <a className="dropdown-item" href="#">Something else here</a>
           </div>
-        </div>
+        </div> */}
       </div>
       <div className="options-container">
         <div className="option d-flex-start">

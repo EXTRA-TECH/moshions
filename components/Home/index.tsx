@@ -11,14 +11,11 @@ import { CATEGORIES } from '../MainMenu/queries';
 import { useQuery } from '@apollo/react-hooks';
 import CategoryCards from './components/CategoryCards';
 
+
 const Home = () => {
   const { data, error, loading } = useQuery(COLLECTIONS);
 
   const { data: categoryData, loading: categoryLoading } = useQuery(CATEGORIES);
-
-  // if (categoryLoading) {
-  //   return <Loader />
-  // }
 
   return (
     <>
