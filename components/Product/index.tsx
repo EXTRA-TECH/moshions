@@ -8,16 +8,25 @@ import {PRODUCT, CHECKOUT_CREATE} from './queries'
 import { useEffect } from 'react'
 import Link from 'next/link'
 import {priceToString} from '../../lib/helpers'
-import {useCart, useProductList, useProductDetails} from '@saleor/sdk'
+import {useCart, useProductList, useProductDetails, useCategoryList} from '@saleor/sdk'
 import Loader from '../../components/Loader'
 import ReactImageMagnify from 'react-image-magnify';
 import InnerImageZoom from 'react-inner-image-zoom';
+import CollectionProduct from '../Category/components/CollectionProduct'
+import {CATEGORY} from '../Category/queries'
 
 
 const ProductComponent = () => {
   const router = useRouter()
   const {id} = router.query
   const {addItem} = useCart()
+
+  const {data: catData, loading: catLoading, error} = useQuery(CATEGORY, {
+    variables: {
+      slug: 'men'
+    }
+  })
+
 
 
   const {data, loading, refetch: refetchProduct} = useQuery(PRODUCT, {
@@ -101,8 +110,8 @@ const ProductComponent = () => {
                       onWheel={onWheelImage}
                       className="w-100 img-zoom" 
                       alt="" /> */}
-                      {/* <ReactImageMagnify {...imageProps} /> */}
-                      <InnerImageZoom src={image || defaultImage} zoomSrc={image || defaultImage} />
+                      <ReactImageMagnify {...imageProps} />
+                      {/* <InnerImageZoom src={image || defaultImage} zoomSrc={image || defaultImage} /> */}
                   </div>
                 </div>
               </div>
@@ -198,7 +207,7 @@ const ProductComponent = () => {
                           id
                         }})
                       }
-                    }} className={`btn min-width-350 fw-600 ${selectedItem === null ? 'disabled' : 'btn-dark'}`} id={`${selectedItem === null ? 'cart-disabled' : ''}`}>
+                    }} className={`btn min-width-350 fw-600 ${selectedItem === null ? 'disabled' : 'btn-dark'}`} id={`${selectedItem === null ? 'cart-disabled' : ''}`} style={{border: "1px solid grey"}}>
                       ADD TO CART
                     </a>
                     {/* <img
@@ -214,15 +223,10 @@ const ProductComponent = () => {
             </div>
           </div>
           <div className="h5 pt-5 text-center text-uppercase">Related Collection</div>
-          {/* <div className="row py-3">
-            {
-              dataSource?.map((el, i) => {
-                return (
-                  <CollectionProduct key={i} dataSource={el} />
-                )
-              })
-            }
-          </div> */}
+          <div className="row py-3">
+            <CollectionProduct dataSource={catData?.category?.products?.edges} />
+          </div>
+          
         </div>
       </MainContainer>
     </>
