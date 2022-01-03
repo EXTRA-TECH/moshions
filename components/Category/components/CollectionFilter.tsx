@@ -61,7 +61,7 @@ const CollectionFilter = ({ title, description }: any) => {
             onClose={handleClose}
             TransitionComponent={Fade}>
             <MenuItem onClick={handleClose}>Color 1</MenuItem>
-            <MenuItem onClick={handleClose}>Color 2</MenuItem>
+            <MenuItem onClick={() => console.log('color')}>Color 2</MenuItem>
           </Menu>
         </div>
 

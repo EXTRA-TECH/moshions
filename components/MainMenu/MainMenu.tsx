@@ -69,11 +69,11 @@ const MainMenu = () => {
                           <a href="#" className="text-uppercase">{el.node.name}</a>
                         </Link>
                       </li> */}
-                    <li key={i} className='has-dropdown'>
+                    <li key={i} className='has-dropdown mr-25 '>
                       <Link href={`/category/${el.node.slug}`}>
                         <>
                           <a href='#' className='text-uppercase drop-nav-link'>
-                            {el.node.name}
+                            {el.node.name} +
                           </a>
                           <DropDownMenu link={`/category/${el.node.slug}`} />
                         </>

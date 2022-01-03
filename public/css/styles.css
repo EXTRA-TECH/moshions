@@ -85,9 +85,16 @@ body {
 
 ul.header-menu-list {
   display: flex;
-  width: 75%;
+  /* width: 75%; */
   margin: 0 auto;
   justify-content: space-between;
+}
+
+.home-menu ul.header-menu-list {
+  /* display: flex; */
+  width: 75%;
+  /* margin: 0 auto;
+  justify-content: space-between; */
 }
 
 ul.header-menu-list li {
@@ -284,7 +291,7 @@ ul.header-menu-list li a {
 }
 
 .middle-section {
-  width: 74%;
+  width: 90%;
   margin: 0 auto;
 }
 
@@ -1852,4 +1859,7 @@ ul.social a:first-child {
   font-size: 18px;
   text-transform: uppercase;
   padding-bottom: 15px;
+}
+.mr-25 {
+  margin-right: 30px;
 }
