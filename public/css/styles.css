@@ -1793,3 +1793,11 @@ ul.social a:first-child {
   width: 20px;
   height: 20px;
 }
+
+@media (max-width: 768px) {
+  .header-shop-actions {
+    height: 30px;
+    grid-template-columns: 30px 30px 100px;
+    margin-top: 15px;
+  }
+}
