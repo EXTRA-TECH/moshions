@@ -94,7 +94,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href='/services'>
+                <Link href='/crs'>
                   <a href='#'>{`SUSTAINABILITY & CRS`}</a>
                 </Link>
               </li>

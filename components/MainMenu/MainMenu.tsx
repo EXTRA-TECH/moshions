@@ -96,7 +96,7 @@ const MainMenu = () => {
           </div>
           <div className='header-shop-actions'>
             <Bag cartItemsQuantity={cartItemsQuantity} />
-            <div>
+            <div className="top-contact">
               <a className=' pt-10' href='tel:2507884653'>
                 <i className='fas fa-phone text-white header-f-icon'></i>
               </a>
