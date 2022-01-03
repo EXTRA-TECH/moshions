@@ -10,8 +10,7 @@ const Header = ({ categorySource, loading }: any) => {
   const { items } = useCart();
 
   const cartItemsQuantity =
-    (items &&
-      items.reduce((prevVal, currVal) => prevVal + currVal.quantity, 0));
+    items && items.reduce((prevVal, currVal) => prevVal + currVal.quantity, 0);
 
   const handleSignOut = () => {
     signOut();
@@ -62,7 +61,9 @@ const Header = ({ categorySource, loading }: any) => {
                                   className='text-uppercase drop-nav-link'>
                                   {el.node.name} +
                                 </a>
-                                <DropDownMenu link={`/category/${el.node.slug}`} />
+                                <DropDownMenu
+                                  link={`/category/${el.node.slug}`}
+                                />
                               </>
                             </Link>
                           </li>
@@ -74,7 +75,7 @@ const Header = ({ categorySource, loading }: any) => {
                     x
                   </a>
                 </div>
-                <div className='header-shop-actions'>
+                <div className='home header-shop-actions'>
                   {/* <img
                     src="/assets/Icon feather-heart.svg"
                     className="header-icon"
@@ -96,9 +97,13 @@ const Header = ({ categorySource, loading }: any) => {
               adventures.
             </p>
 
-            <span onClick={() => {
-              Router.replace('/category/men')
-            }} className='outline'>Discover More</span>
+            <span
+              onClick={() => {
+                Router.replace('/category/men');
+              }}
+              className='outline'>
+              Discover More
+            </span>
           </div>
         </div>
         <div className='main-header-right'>

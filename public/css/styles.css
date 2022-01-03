@@ -1863,3 +1863,8 @@ ul.social a:first-child {
 .mr-25 {
   margin-right: 30px;
 }
+
+.home.header-shop-actions {
+  display: block;
+  padding-top: 5px;
+}
