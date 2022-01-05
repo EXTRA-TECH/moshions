@@ -28,10 +28,14 @@ const generateCart = (
             <div className='side-product-details-image p-2'>
               <img src={image || ''} alt={''} className='w-100p' srcSet='' />
             </div>
-            <div className='p-2'>
-              <p className='cart-item-title text-light'>{name || '-'}</p>
-              <p className='color-cold text-light'>Attr: {size || '-'} / </p>
-              <p className='color-cold text-light'>{quantity}</p>
+            <div className='p-2 p-cart'>
+              <div className='p-cart-details'>
+                <div>
+                  <p className='cart-item-title text-light'>{name || '-'}</p>
+                  <p className=' p-cart-attr'>Attr: {size || '-'} / </p>
+                </div>
+                <p className='p-cart-qty'>{quantity}</p>
+              </div>
               <div className=''>
                 <a
                   href='#'
@@ -39,7 +43,7 @@ const generateCart = (
                     e.preventDefault();
                     removeItem(variant?.id);
                   }}
-                  className='text-light'>
+                  className='text-light d-block text-right fs--15'>
                   Remove
                 </a>
               </div>

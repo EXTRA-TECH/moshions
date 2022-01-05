@@ -94,7 +94,7 @@ const MainMenu = () => {
               x
             </a>
           </div>
-          <div className='header-shop-actions'>
+          <div className='main-menu header-shop-actions'>
             <Bag cartItemsQuantity={cartItemsQuantity} />
             <div className="top-contact">
               <a className=' pt-10' href='tel:2507884653'>
