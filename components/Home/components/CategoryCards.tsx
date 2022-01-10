@@ -1,6 +1,7 @@
 import React from 'react';
 
 function CategoryCards() {
+  
   return (
     <section>
       <div className='category-cards'>
