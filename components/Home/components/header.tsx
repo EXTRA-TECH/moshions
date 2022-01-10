@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import type { NextComponentType } from 'next';
 import Link from 'next/link';
 import { useAuth, useCart } from '@saleor/sdk';
@@ -8,6 +9,12 @@ import Router from 'next/router';
 const Header = ({ categorySource, loading }: any) => {
   const { user, signOut } = useAuth();
   const { items } = useCart();
+
+  const [isMenuVisible, setisMenuVisible] = useState('');
+
+  const MouseOver = (el) => {
+    setisMenuVisible(el);
+  };
 
   const cartItemsQuantity =
     items && items.reduce((prevVal, currVal) => prevVal + currVal.quantity, 0);
@@ -53,17 +60,27 @@ const Header = ({ categorySource, loading }: any) => {
                     {categorySource?.categories?.edges?.map(
                       (el: any, i: any) => {
                         return (
-                          <li key={i} className='has-dropdown'>
+                          <li
+                            key={i}
+                            onMouseOver={() => MouseOver(el.node.name)}
+                            className='has-dropdown'>
                             <Link href={`/category/${el.node.slug}`}>
                               <>
                                 <a
                                   href='#'
+                                  onClick={(e) => {
+                                    e.preventDefault();
+                                    setisMenuVisible(el.node.name);
+                                  }}
                                   className='text-uppercase drop-nav-link'>
                                   {el.node.name} +
                                 </a>
-                                <DropDownMenu
-                                  link={`/category/${el.node.slug}`}
-                                />
+                                {isMenuVisible === el.node.name && (
+                                  <DropDownMenu
+                                    setVisibility={() => setisMenuVisible('')}
+                                    link={`/category/${el.node.slug}`}
+                                  />
+                                )}
                               </>
                             </Link>
                           </li>
@@ -107,7 +124,7 @@ const Header = ({ categorySource, loading }: any) => {
           </div>
         </div>
         <div className='main-header-right'>
-          <img src='/assets/main-image.svg' alt='' srcSet='' />
+          <img src='/assets/20211106-_I8A4844-scaled.jpg' alt='' srcSet='' />
         </div>
       </div>
 

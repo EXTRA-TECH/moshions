@@ -1,9 +1,12 @@
+import React, { useState } from 'react';
 
-import React from 'react';
+const DropDownMenu = ({ link, setVisibility }) => {
+  // const MouseOut = (el) => {
+  //   setisMenuVisible(el);
+  // };
 
-const DropDownMenu = ({link}) => {
   return (
-    <ul className='drop-down-menu'>
+    <ul className='drop-down-menu' onMouseLeave={setVisibility}>
       <li>
         <a href={link}> Ishuri Collection</a>
       </li>
@@ -15,6 +18,6 @@ const DropDownMenu = ({link}) => {
       </li>
     </ul>
   );
-}
+};
 
 export default DropDownMenu;

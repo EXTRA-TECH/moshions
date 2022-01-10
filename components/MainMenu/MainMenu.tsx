@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import Navbar from '../Navbar';
 import Link from 'next/link';
 import Bag from '../Bag';
@@ -13,6 +13,9 @@ import DropDownMenu from '../Home/DropDownMenu';
 
 const MainMenu = () => {
   const { items } = useCart();
+
+  const [isMenuVisible, setisMenuVisible] = useState('');
+
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -21,6 +24,10 @@ const MainMenu = () => {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const MouseOver = (el) => {
+    setisMenuVisible(el);
   };
 
   const { data, loading, error } = useQuery(CATEGORIES);
@@ -50,7 +57,13 @@ const MainMenu = () => {
               srcSet=''
             />
           </a>
-          <div id='menu' className='header-menu menu-global'>
+          <div
+            id='menu'
+            className='header-menu menu-global'
+            // style={{
+            //   display: isMobileMenuVisible ? 'flex !important' : 'none',
+            // }}
+          >
             <ul className='header-menu-list'>
               {loading && (
                 <button className='btn btn-light' type='button' disabled>
@@ -69,13 +82,27 @@ const MainMenu = () => {
                           <a href="#" className="text-uppercase">{el.node.name}</a>
                         </Link>
                       </li> */}
-                    <li key={i} className='has-dropdown mr-25 '>
+                    <li
+                      key={i}
+                      onMouseOver={() => MouseOver(el.node.name)}
+                      className='has-dropdown mr-25 '>
                       <Link href={`/category/${el.node.slug}`}>
                         <>
-                          <a href='#' className='text-uppercase drop-nav-link'>
+                          <a
+                            href='#'
+                            onClick={(e) => {
+                              e.preventDefault();
+                              setisMenuVisible(el.node.name);
+                            }}
+                            className='text-uppercase drop-nav-link'>
                             {el.node.name} +
                           </a>
-                          <DropDownMenu link={`/category/${el.node.slug}`} />
+                          {isMenuVisible === el.node.name && (
+                            <DropDownMenu
+                              setVisibility={() => setisMenuVisible('')}
+                              link={`/category/${el.node.slug}`}
+                            />
+                          )}
                         </>
                       </Link>
                     </li>
@@ -96,7 +123,7 @@ const MainMenu = () => {
           </div>
           <div className='main-menu header-shop-actions'>
             <Bag cartItemsQuantity={cartItemsQuantity} />
-            <div className="top-contact">
+            <div className='top-contact'>
               <a className=' pt-10' href='tel:2507884653'>
                 <i className='fas fa-phone text-white header-f-icon'></i>
               </a>
