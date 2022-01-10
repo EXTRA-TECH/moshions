@@ -10,7 +10,7 @@ import { COLLECTIONS } from './queries';
 import { CATEGORIES } from '../MainMenu/queries';
 import { useQuery } from '@apollo/react-hooks';
 import CategoryCards from './components/CategoryCards';
-
+import ProductCarousel from './components/ProductCarousel';
 
 const Home = () => {
   const { data, error, loading } = useQuery(COLLECTIONS);
@@ -25,10 +25,11 @@ const Home = () => {
       <div className='wrapper'>
         <Header categorySource={categoryData} loading={categoryLoading} />
         <SingleImage />
+        <ProductCarousel />
         <CategoryCards />
         {/* <SingleImageTextLeft />
         <SingleImageTextRight /> */}
-        {data &&
+        {/* {data &&
           data?.collections?.edges?.map((el: any, i: number) => (
             <DynamicCollection
               key={i}
@@ -37,7 +38,7 @@ const Home = () => {
               categorySource={categoryData}
               loading={categoryLoading}
             />
-          ))}
+          ))} */}
         <Footer />
       </div>
     </>

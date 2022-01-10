@@ -61,11 +61,11 @@ const Footer = () => {
                     <a href='#'>MADE TO MEASURE</a>
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link href='/services'>
                     <a href='#'>{`READY TO WEAR`}</a>
                   </Link>
-                </li>
+                </li> */}
                 <li>
                   <Link href='/traditional-wear'>
                     <a href='#'>TRADITIONAL WEAR</a>
@@ -88,11 +88,11 @@ const Footer = () => {
                   <a href='#'>PRESS</a>
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href='/services'>
                   <a href='#'>{`LEGAL NOTICE`}</a>
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link href='/crs'>
                   <a href='#'>{`SUSTAINABILITY & CRS`}</a>

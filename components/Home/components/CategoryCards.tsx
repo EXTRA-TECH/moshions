@@ -8,8 +8,8 @@ function CategoryCards() {
           <img src='/assets/Video 1.jpg' />
           <div className='category-content'>
             <div>
-              <h1>Inkingi Collection & More</h1>
-              <p>Shop Previous Collections</p>
+              <h1>SS21</h1>
+              <p>IMANDWA COLLECTION</p>
             </div>
             <div className='category-lists'>
               <ul>
@@ -30,7 +30,7 @@ function CategoryCards() {
           <img src='/assets/Video 1.jpg' />
           <div className='category-content'>
             <div>
-              <h1>Inkingi Collection & More</h1>
+              <h1>SS20</h1>
               <p>Shop Previous Collections</p>
             </div>
             <div className='category-lists'></div>

@@ -1965,3 +1965,82 @@ ul.social a:first-child {
     padding-top: 0px;
   }
 }
+
+body {
+  overflow-x: hidden;
+}
+
+@use postcss-nested;
+/* 
+Animate the .marquee container, adjust the speed by changing the timing. Also, setting 'min-width' on .item is important.
+*/
+:root {
+  --timing: 20000ms;
+  --width: 32rem;
+  --height: 16rem;
+}
+
+.marquee {
+  display: flex;
+  animation: var(--timing) linear 0s infinite normal both running marquee;
+  /* overflow: hidden; */
+}
+
+.marquee:hover {
+  animation-play-state: paused;
+}
+
+.marquee-item {
+  display: flex;
+  min-width: calc(var(--width) / 1.5);
+  width: calc(var(--width) / 1.5);
+  /* height: calc(var(--height) / 1.5); */
+  padding: 0 2px;
+  box-sizing: content-box;
+  transform: translate3d(0, 0, 0);
+
+  @media screen and (min-width: 36rem) {
+    min-width: var(--width);
+    width: var(--width);
+    /* height: var(--height); */
+  }
+}
+
+.marquee-card {
+  display: flex;
+  box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+  /* background: salmon; */
+  /* border-radius: 0.75rem;
+  padding: 1rem; */
+  justify-content: center;
+  align-items: center;
+  color: white;
+  width: 100%;
+}
+
+.marquee-card > * {
+  margin: auto;
+  height: 100%;
+}
+
+.marquee-container {
+  display: flex;
+  width: 100%;
+  font-size: 18px;
+  /* padding-top: 1rem; */
+  margin-top: 0px;
+  overflow: hidden;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.w-100p {
+  width: 100%;
+}
