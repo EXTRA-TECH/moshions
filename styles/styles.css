@@ -73,7 +73,6 @@ body {
 }
 
 .cart-number {
-  
 }
 
 .logo {
@@ -986,7 +985,7 @@ input[type='radio'].show-bg:checked + label {
 }
 
 .img-hover-zoom img {
-  transition: transform .5s ease;
+  transition: transform 0.5s ease;
 }
 
 .img-zoom:hover {
@@ -1004,7 +1003,6 @@ input[type='radio'].show-bg:checked + label {
   margin-bottom: 5px;
   cursor: pointer;
 }
-
 
 /* Loader */
 #preloader {
@@ -1029,7 +1027,7 @@ input[type='radio'].show-bg:checked + label {
   animation: spin 2s linear infinite;
 }
 #loader:before {
-  content: "";
+  content: '';
   position: absolute;
   top: 5px;
   left: 5px;
@@ -1042,7 +1040,7 @@ input[type='radio'].show-bg:checked + label {
   animation: spin 3s linear infinite;
 }
 #loader:after {
-  content: "";
+  content: '';
   position: absolute;
   top: 15px;
   left: 15px;
@@ -1055,27 +1053,27 @@ input[type='radio'].show-bg:checked + label {
   animation: spin 1.5s linear infinite;
 }
 @-webkit-keyframes spin {
-  0%   {
-      -webkit-transform: rotate(0deg);
-      -ms-transform: rotate(0deg);
-      transform: rotate(0deg);
+  0% {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
   }
   100% {
-      -webkit-transform: rotate(360deg);
-      -ms-transform: rotate(360deg);
-      transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 @keyframes spin {
-  0%   {
-      -webkit-transform: rotate(0deg);
-      -ms-transform: rotate(0deg);
-      transform: rotate(0deg);
+  0% {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
   }
   100% {
-      -webkit-transform: rotate(360deg);
-      -ms-transform: rotate(360deg);
-      transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
@@ -1497,11 +1495,11 @@ input[type='radio'].show-bg:checked + label {
 }
 
 #nav-checkout {
-  --bs-breadcrumb-divider: '>'
+  --bs-breadcrumb-divider: '>';
 }
 
 #span-checkout {
-  font-weight: 400
+  font-weight: 400;
 }
 
 /* cart disabled */
@@ -1522,7 +1520,7 @@ input[type='radio'].show-bg:checked + label {
 /* Custom style */
 .accordion-button::after {
   background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%23333' xmlns='http://www.w3.org/2000/svg'%3e%3cpath fill-rule='evenodd' d='M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z' clip-rule='evenodd'/%3e%3c/svg%3e");
-  transform: scale(.7) !important;
+  transform: scale(0.7) !important;
 }
 .accordion-button:not(.collapsed)::after {
   background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='%23333' xmlns='http://www.w3.org/2000/svg'%3e%3cpath fill-rule='evenodd' d='M0 8a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H1a1 1 0 0 1-1-1z' clip-rule='evenodd'/%3e%3c/svg%3e");
@@ -1546,4 +1544,10 @@ input[type='radio'].show-bg:checked + label {
 
 .dropdown-toggle::after {
   display: none;
+}
+
+@media (max-width: 768px) {
+  .faq-container {
+    display: block !important;
+  }
 }

@@ -1,12 +1,12 @@
+/* eslint-disable @next/next/no-img-element */
 import React from 'react';
 
 function CategoryCards() {
-  
   return (
     <section>
       <div className='category-cards'>
         <div className='category-card'>
-          <img src='/assets/Video 1.jpg' />
+          <img src='/assets/Video 1.jpg' alt='' />
           <div className='category-content'>
             <div>
               <h1>SS21</h1>
@@ -21,7 +21,9 @@ function CategoryCards() {
                   <a href='#'>WOMEN</a>
                 </li>
                 <li>
-                  <a href='#'>OTHER</a>
+                  <a href='#' className='text-uppercase'>
+                    Accessories
+                  </a>
                 </li>
               </ul>
             </div>

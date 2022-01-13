@@ -110,7 +110,7 @@
   flex-direction: row;
 }
 
-.product-details-left{
+.product-details-left {
   /* product details left */
   display: flex;
   flex-direction: column;
@@ -144,7 +144,7 @@
   padding-top: 23px;
 }
 
-.input-group  {
+.input-group {
   padding-bottom: 23px;
 }
 
@@ -152,7 +152,7 @@
   z-index: 1;
   animation-name: productcard;
   animation-duration: 3s;
-  animation-delay: .1s;
+  animation-delay: 0.1s;
   animation-iteration-count: infinite;
   animation-timing-function: ease;
   border: none;
@@ -173,8 +173,6 @@
   }
 }
 
-
-
 .subscribe-input {
   width: 45vw;
   background-color: #000000;
@@ -187,7 +185,7 @@
 
 .subscribe-button {
   border: 1px solid #707070;
-  background-color: #10191F;
+  background-color: #10191f;
   color: white;
   padding-top: 2px;
   padding-bottom: 2px;
@@ -208,7 +206,7 @@
   width: 100%;
   margin: 0 auto;
   height: 100vh;
-  background-color: #000000
+  background-color: #000000;
 }
 
 .navbar-home {
@@ -238,7 +236,7 @@
 
 .home-bottom-row {
   height: 100vh;
-  background-color: #C23F31;
+  background-color: #c23f31;
 }
 
 .home-bottom-row > img {
@@ -260,7 +258,7 @@
   width: 100%;
   margin: 0 auto;
   height: 100vh;
-  background-color: #F8F8F8;
+  background-color: #f8f8f8;
   padding-right: 0 !important;
   padding-left: 0 !important;
   width: 100%;
@@ -290,7 +288,7 @@
   width: 100%;
   margin: 0 auto;
   height: 100vh;
-  background-color: #F8BB6E;
+  background-color: #f8bb6e;
   padding-right: 0 !important;
   padding-left: 0 !important;
   width: 100%;
@@ -298,8 +296,8 @@
 
 .prev-collection > img {
   margin: 0;
-  max-width:100%;
-  max-height:100%;
+  max-width: 100%;
+  max-height: 100%;
   object-fit: cover;
   margin: 0;
   padding: 0;
@@ -312,4 +310,11 @@
   .navbar-links-container {
     display: none;
   }
+}
+
+.bg-cart-menu {
+  background-color: #000 !important;
+}
+.contents {
+  width: 100%;
 }

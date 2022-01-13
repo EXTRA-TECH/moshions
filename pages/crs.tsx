@@ -1,8 +1,8 @@
 import React from 'react';
 
 import Head from 'next/head';
-import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import MainContainer from '../components/MainContainer';
 
 function Crs() {
   return (
@@ -10,8 +10,7 @@ function Crs() {
       <Head>
         <title>FAQS</title>
       </Head>
-      <div className='wrapper'>
-        <Navbar />
+      <MainContainer>
         <section>
           <div className='crs-header'>
             <img src='/assets/forest.jpeg' alt='' />
@@ -91,7 +90,7 @@ function Crs() {
           <img src='/assets/imigogo-bg.png' className='w-100p' />
         </div>
         <Footer />
-      </div>
+      </MainContainer>
     </>
   );
 }

@@ -146,7 +146,7 @@ const Bag = ({ cartItemsQuantity }: any) => {
         </a>
       </span>
       <div
-        className='offcanvas offcanvas-end bg-dark'
+        className='offcanvas offcanvas-end bg-black'
         data-bs-scroll='true'
         data-bs-backdrop='false'
         tabIndex={-1}

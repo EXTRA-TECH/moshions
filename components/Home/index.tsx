@@ -24,7 +24,7 @@ const Home = () => {
       </Head>
       <div className='wrapper'>
         <Header categorySource={categoryData} loading={categoryLoading} />
-        <SingleImage />
+        {/* <SingleImage /> */}
         <ProductCarousel />
         <CategoryCards />
         {/* <SingleImageTextLeft />
