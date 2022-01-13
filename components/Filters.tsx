@@ -1,18 +1,22 @@
-const Filters = () => {
-  return (
-    <div>
-        <div className="dropdown">
-          <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown button
-          </button>
-          <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a className="dropdown-item" href="#">Action</a>
-            <a className="dropdown-item" href="#">Another action</a>
-            <a className="dropdown-item" href="#">Something else here</a>
-          </div>
-        </div>
-    </div>
-  )
-}
+import React, { useState } from 'react';
 
-export default Filters
+const Filters = ({ title, options }: any) => {
+  const [visibility, setVisibility] = useState('');
+  return (
+    <div className='option'>
+      <div onClick={() => setVisibility(title)}>
+        <span>{title}</span>
+        <i className='bi bi-chevron-down'></i>
+      </div>
+      <div
+        onMouseLeave={() => setVisibility('')}
+        className={`filter-options ${visibility === title ? '' : 'd-none'}`}>
+        {options.map((option: any, i: number) => (
+          <li key={i}>{option}</li>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Filters;

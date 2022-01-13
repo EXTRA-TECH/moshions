@@ -2044,3 +2044,26 @@ Animate the .marquee container, adjust the speed by changing the timing. Also, s
 .w-100p {
   width: 100%;
 }
+.option {
+  position: relative;
+}
+.option span {
+  font-size: 14px;
+}
+
+.filter-options {
+  background: #fff;
+  padding: 10px 15px;
+  box-shadow: 0 10px 24px rgb(0 0 0 / 15%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 5px;
+  z-index: 9999;
+}
+
+.filter-options li {
+  list-style: none;
+  padding-top: 8px;
+  cursor: pointer;
+}

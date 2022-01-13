@@ -13,7 +13,7 @@ const Header = ({ categorySource, loading }: any) => {
 
   const [isMenuVisible, setisMenuVisible] = useState('');
 
-  const MouseOver = (el) => {
+  const MouseOver = (el: any) => {
     setisMenuVisible(el);
   };
 

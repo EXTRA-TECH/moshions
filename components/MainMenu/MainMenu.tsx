@@ -26,7 +26,7 @@ const MainMenu = () => {
     setAnchorEl(null);
   };
 
-  const MouseOver = (el) => {
+  const MouseOver = (el: any) => {
     setisMenuVisible(el);
   };
 
