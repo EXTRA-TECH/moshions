@@ -1551,3 +1551,22 @@ input[type='radio'].show-bg:checked + label {
     display: block !important;
   }
 }
+
+.marquee-card {
+  display: flex;
+  box-shadow: 0 8px 20px 0 rgb(0 0 0 / 0%);
+  /* background: salmon; */
+  justify-content: center;
+  align-items: center;
+  color: white;
+  width: 100%;
+  /* padding: 20px; */
+}
+
+.marquee-item {
+  padding: 15px;
+}
+
+.marquee-container {
+  padding: 1rem 0;
+}

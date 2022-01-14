@@ -137,13 +137,20 @@ const Header = ({ categorySource, loading }: any) => {
 
       {/* <!-- SECTION MOBILE --> */}
 
-      <section className='bg-dark'>
+      <section className='bg-black'>
         <div className='header-contents show-small-mobile py-6'>
-          <h3>MOSHIONS SS 21 - ISHURI COLLECTION</h3>
+          <h3 className='text-uppercase'>Imandwa SS22 collection</h3>
           <p>
-            An ode to individuality, to the students of life, to the misfits,
-            whom society labels strange. Ishuri celebrates those brave enough to
-            carve out their own path in life and create their own adventures.
+            A collection to express gender freedom in an interplay of
+            traditional and contemporary aesthetics. Constructed from organic
+            fabrics and naturally processed dyes.
+          </p>
+
+          <p>
+            With Imandwa Collection, Moshions adapts the pre-order model to
+            optimise a conscious and demand-based production for every piece.
+            Once the order is paid for, the delivery takes place between
+            December 2021 and February 2022.
           </p>
 
           <span className='outline'>Discover More</span>
