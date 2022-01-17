@@ -167,7 +167,7 @@ const Faqs = () => {
         </div>
       </MainContainer>
 
-      <Footer />
+<!--       <Footer /> -->
     </>
   );
 };
