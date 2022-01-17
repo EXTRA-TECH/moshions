@@ -313,3 +313,9 @@
     display: none;
   }
 }
+
+.marquee-item {
+  padding: 40px 15px !important;
+}
+  
+
