@@ -1995,7 +1995,7 @@ Animate the .marquee container, adjust the speed by changing the timing. Also, s
   min-width: calc(var(--width) / 1.5);
   width: calc(var(--width) / 1.5);
   /* height: calc(var(--height) / 1.5); */
-  padding: 0 2px;
+  padding: 0px 10px;
   box-sizing: content-box;
   transform: translate3d(0, 0, 0);
 
@@ -2004,6 +2004,10 @@ Animate the .marquee container, adjust the speed by changing the timing. Also, s
     width: var(--width);
     /* height: var(--height); */
   }
+}
+
+.carousel-row {
+  padding: 40px;
 }
 
 .marquee-card {
@@ -2066,4 +2070,11 @@ Animate the .marquee container, adjust the speed by changing the timing. Also, s
   list-style: none;
   padding-top: 8px;
   cursor: pointer;
+}
+
+
+ @media (max-width: 500px) {
+  .carousel-row {
+  padding: 40px;
+}
 }

@@ -28,14 +28,14 @@ const products = [
 
 function ProductCarousel() {
   return (
-    <div className='row'>
+    <div className='row carousel-row'>
       {/* <div className=''>chgh</div> */}
       <div className='marquee-container'>
         <div
           className='marquee'
           style={{ width: `${(300 * products.length) / 2}px` }}>
           {products.map((product) => (
-            <div key={product.img} className='marquee-item'>
+            <div key={product.img} className='marquee-item mr--10'>
               <div className='marquee-card'>
                 <img src={product.img} alt='' className='w-100p' />
               </div>

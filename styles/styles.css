@@ -1570,3 +1570,13 @@ input[type='radio'].show-bg:checked + label {
 .marquee-container {
   padding: 1rem 0;
 }
+
+.carousel-row {
+  padding: 30px 40px;
+}
+
+@media (max-width: 500px) {
+  .carousel-row {
+    padding: 20px;
+  }
+}
