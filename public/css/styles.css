@@ -568,7 +568,8 @@ form {
 .small-section-image-holder {
   position: relative;
 }
-.more-link {
+
+.small-section-image-holder a {
   position: absolute;
   top: 40%;
   right: 10%;
@@ -578,7 +579,7 @@ form {
   opacity: 0.95;
 }
 
-.more-link:hover {
+.small-section-image-holder a:hover {
   color: #fff;
 }
 
@@ -2064,6 +2065,7 @@ Animate the .marquee container, adjust the speed by changing the timing. Also, s
   left: 0;
   border-radius: 5px;
   z-index: 9999;
+  width: max-content;
 }
 
 .filter-options li {
@@ -2072,9 +2074,18 @@ Animate the .marquee container, adjust the speed by changing the timing. Also, s
   cursor: pointer;
 }
 
-
- @media (max-width: 500px) {
+@media (max-width: 500px) {
   .carousel-row {
-  padding: 40px;
+    padding: 40px;
+  }
 }
+
+.filter-select {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.filter-select input {
+  margin-right: 10px;
 }

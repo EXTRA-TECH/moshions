@@ -12,7 +12,12 @@ const Filters = ({ title, options }: any) => {
         onMouseLeave={() => setVisibility('')}
         className={`filter-options ${visibility === title ? '' : 'd-none'}`}>
         {options.map((option: any, i: number) => (
-          <li key={i}>{option}</li>
+          <li key={i}>
+            <label htmlFor={option} className='filter-select'>
+              <input type='checkbox' id={option} />
+              <span>{option}</span>
+            </label>
+          </li>
         ))}
       </div>
     </div>

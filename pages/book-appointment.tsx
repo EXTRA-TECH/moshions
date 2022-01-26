@@ -77,8 +77,6 @@ const BookAppointMent = () => {
           />
         </div>
       </MainContainer>
-      <Footer />
-      {/* </div> */}
     </>
   );
 };

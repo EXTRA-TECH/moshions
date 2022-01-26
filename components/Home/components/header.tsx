@@ -123,7 +123,7 @@ const Header = ({ categorySource, loading }: any) => {
 
             <span
               onClick={() => {
-                Router.replace('/category/men');
+                Router.push('/all-collections');
               }}
               className='outline'>
               Discover More
@@ -145,15 +145,20 @@ const Header = ({ categorySource, loading }: any) => {
             traditional and contemporary aesthetics. Constructed from organic
             fabrics and naturally processed dyes.
           </p>
-
           <p>
             With Imandwa Collection, Moshions adapts the pre-order model to
             optimise a conscious and demand-based production for every piece.
             Once the order is paid for, the delivery takes place between
             December 2021 and February 2022.
           </p>
-
-          <span className='outline'>Discover More</span>
+          {/* all-collectiosn */}
+          <span
+            className='outline'
+            onClick={() => {
+              Router.push('/all-collections');
+            }}>
+            Discover More
+          </span>
         </div>
       </section>
     </>

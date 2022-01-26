@@ -22,7 +22,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 // import "bootstrap/dist/css/bootstrap.min.css";
 
-// import "react-inner-image-zoom/lib/InnerImageZoom/styles.min.css";
+import 'react-inner-image-zoom/lib/InnerImageZoom/styles.min.css';
 
 // configure saleor platform
 

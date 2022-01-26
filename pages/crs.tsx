@@ -89,7 +89,6 @@ function Crs() {
         <div className='rightBG'>
           <img src='/assets/imigogo-bg.png' className='w-100p' />
         </div>
-        <Footer />
       </MainContainer>
     </>
   );
