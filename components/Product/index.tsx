@@ -241,7 +241,10 @@ const ProductComponent = () => {
                         );
                       })}
                     </div>
-                    <a href='#' className='text-muted'>
+                    <a
+                      href='#'
+                      className='text-muted'
+                      onClick={() => router.push('/size-guide')}>
                       SIZE GUIDE
                     </a>
                   </div>

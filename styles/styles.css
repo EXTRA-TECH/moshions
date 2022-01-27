@@ -1580,3 +1580,26 @@ input[type='radio'].show-bg:checked + label {
     padding: 20px;
   }
 }
+
+.table-sizes thead {
+  background-color: #000;
+  color: #fff !important;
+}
+
+.table-sizes thead tr {
+  background-color: black !important;
+  color: #fff;
+}
+
+.table-sizes thead tr th {
+  font-weight: 300;
+}
+
+.pb--80 {
+  padding-bottom: 80px;
+}
+
+.guide {
+  display: block;
+  padding-bottom: 10px;
+}
