@@ -6,14 +6,14 @@ import SingleImageTextLeft from './components/singleImageTextLeft';
 import SingleImageTextRight from './components/singleImageTextRight';
 import DynamicCollection from './components/DynamicCollection';
 import Footer from '../Footer';
-import { COLLECTIONS } from './queries';
+import { COLLECTIONS, PRODUCTS } from './queries';
 import { CATEGORIES } from '../MainMenu/queries';
 import { useQuery } from '@apollo/react-hooks';
 import CategoryCards from './components/CategoryCards';
 import ProductCarousel from './components/ProductCarousel';
 
 const Home = () => {
-  const { data, error, loading } = useQuery(COLLECTIONS);
+  const { data: catogryWithProductsData, error, loading } = useQuery(PRODUCTS);
 
   const { data: categoryData, loading: categoryLoading } = useQuery(CATEGORIES);
 
@@ -25,7 +25,7 @@ const Home = () => {
       <div className='wrapper'>
         <Header categorySource={categoryData} loading={categoryLoading} />
         {/* <SingleImage /> */}
-        <ProductCarousel />
+        <ProductCarousel productsData={catogryWithProductsData?.category} />
         <CategoryCards />
         {/* <SingleImageTextLeft />
         <SingleImageTextRight /> */}

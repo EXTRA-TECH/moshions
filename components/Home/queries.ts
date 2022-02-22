@@ -18,3 +18,23 @@ export const COLLECTIONS = gql`
     }
   }
 `
+
+export const PRODUCTS = gql`
+  query {
+  category(slug: "slider") {
+    id
+    slug
+    name
+    products(first: 10, channel: "default-channel") {
+      edges {
+        node {
+          id
+          media {
+            url
+            alt
+          }
+        }
+      }
+    }
+  }
+}`
