@@ -2042,7 +2042,7 @@ Animate the .marquee container, adjust the speed by changing the timing. Also, s
     transform: translateX(0%);
   }
   100% {
-    transform: translateX(-100%);
+    transform: translateX(-50%);
   }
 }
 
