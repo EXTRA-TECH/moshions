@@ -17,9 +17,9 @@ import { reducer } from '../lib/reducer';
 import { SaleorProvider, useAuth } from '@saleor/sdk';
 import { ConfigInput } from '@saleor/sdk/lib/types';
 
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { fab } from '@fortawesome/free-brands-svg-icons';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 // import "bootstrap/dist/css/bootstrap.min.css";
 
 import 'react-inner-image-zoom/lib/InnerImageZoom/styles.min.css';
@@ -34,7 +34,7 @@ import {
 } from '../constants';
 import Loader from '../components/Loader';
 
-library.add(fab, faCoffee);
+// library.add(fab, faCoffee);
 
 // Router.events.on("routeChangeStart", () => NProgress.start());
 // Router.events.on("routeChangeComplete", () => NProgress.done());

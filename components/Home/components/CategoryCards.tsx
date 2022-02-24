@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react';
+import Link from 'next/link';
 
 function CategoryCards() {
   return (
@@ -15,13 +16,18 @@ function CategoryCards() {
             <div className='category-lists'>
               <ul>
                 <li>
-                  <a href="/products?category=men">MEN</a>
+                  <Link href='/products?category=men'>
+                    MEN
+                  </Link>
                 </li>
                 <li>
-                  <a href="/products?category=women">WOMEN</a>
-                </li>
+                  <Link href='/products?category=women'>
+                    WOMEN
+                  </Link>                </li>
                 <li>
-                  <a href="/products?category=accessories" className='text-uppercase'>ACCESSORIES</a>
+                  <Link href='/products?category=accessories' >
+                    ACCESSORIES
+                  </Link>
                 </li>
               </ul>
             </div>
