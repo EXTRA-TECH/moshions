@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import Router from 'next/router';
 
 const ProductCarousel = ({ productsData }: any) => {
+
   return (
     <div className='row carousel-row'>
       <div className='marquee-container'>
